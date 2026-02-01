@@ -3,90 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raphael Borges | Editor & Eng. Automação</title>
+    <title>Raphael Borges | Portfólio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="container">
-        <div class="avatar-container">
-            <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=3b82f6&color=fff&size=256'" alt="Raphael Borges" class="avatar">
-        </div>
+    <div class="ambient-light"></div>
 
+    <header class="container">
+        <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=7c3aed&color=fff&size=256'" alt="Raphael Borges" class="avatar">
+        
         <h1>Raphael Borges</h1>
-        <span class="role-tag">Editor de Vídeo & Estudante de Eng. Automação</span>
         
         <p class="bio">
-            Unindo a precisão da engenharia com a criatividade do visual. 
-            Trago uma abordagem analítica para a edição, otimizando retenção e ritmo. 
-            Seja em vlogs cinematográficos ou cortes virais, meu foco é resolver problemas através do vídeo.
+            Editor de Vídeo especializado em cortes dinâmicos, vlogs e criação de conteúdo para redes sociais. 
+            <br>
+            Também sou estudante de Engenharia de Controle e Automação.
         </p>
 
         <nav class="social-links">
             <a href="#" target="_blank">Behance</a>
             <a href="https://www.linkedin.com/in/raphaelcborges/" target="_blank">LinkedIn</a>
-            <a href="mailto:seuemail@email.com">Entrar em Contato</a>
+            <a href="mailto:seuemail@email.com">Contato</a>
         </nav>
     </header>
 
     <main class="container">
+        <h2 class="section-title">Portfólio Selecionado</h2>
         
         <div class="video-grid">
             
             <div class="project-card tall" data-video-id="DAXXWw_os9w" data-is-vertical="true">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/DAXXWw_os9w/hqdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
-                    <h3>Voymatch - App Promocional</h3>
-                    <p>Motion Graphics • Shorts</p>
+                    <h3>Voymatch App</h3>
+                    <p>Vídeo Promocional • Motion Graphics</p>
                 </div>
             </div>
 
             <div class="project-card wide" data-video-id="n9LmxGAgWN4">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/n9LmxGAgWN4/maxresdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
                     <h3>Desafio Pokémon Kanto</h3>
-                    <p>Edição Dinâmica • Storytelling Visual</p>
+                    <p>Edição Dinâmica • Storytelling</p>
                 </div>
             </div>
 
             <div class="project-card wide" data-video-id="DGBm17POVG0">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/DGBm17POVG0/maxresdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
                     <h3>Desafio Pokémon Johto</h3>
-                    <p>Cortes Rápidos • Ritmo Acelerado</p>
+                    <p>Ritmo Acelerado • Cortes Rápidos</p>
                 </div>
             </div>
 
             <div class="project-card wide" data-video-id="qafkHYKR2AQ">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/qafkHYKR2AQ/maxresdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
                     <h3>Explicação de Golpes</h3>
-                    <p>Roteiro Visual • Motion</p>
+                    <p>Assets Visuais • Roteiro</p>
                 </div>
             </div>
 
             <div class="project-card wide" data-video-id="VepjSKO6kH4">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/VepjSKO6kH4/maxresdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
                     <h3>Vlog - Teste de Editor</h3>
-                    <p>Storytelling • B-Rolls</p>
+                    <p>Vlog Style • B-Rolls</p>
                 </div>
             </div>
 
             <div class="project-card wide" data-video-id="lhyyyJnHDG8">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/lhyyyJnHDG8/maxresdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
                     <h3>Gameplay - paiN Gaming</h3>
@@ -121,7 +127,6 @@
                     modalContent.classList.remove('vertical-mode');
                 }
                 
-                // Carrega o vídeo
                 videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 modal.classList.add('active');
             });
