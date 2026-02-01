@@ -1,15 +1,14 @@
 /* --- VARIÁVEIS --- */
 :root {
-    --text-main: #111827; /* Texto preto para leitura perfeita */
+    --text-main: #111827;
     --text-muted: #374151;
     
-    /* Vidro FORTE e OPACO para não sumir no fundo colorido */
+    /* Vidro FORTE para os cards principais */
     --glass-bg: rgba(255, 255, 255, 0.75); 
     --glass-border: rgba(255, 255, 255, 0.9);
     --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.2);
     
-    --primary-color: #4f46e5; /* Roxo Indigo para botões */
-    --accent-color: #10b981;  /* Verde para destaques */
+    --primary-color: #6366f1; /* Roxo Índigo para destaques */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -83,7 +82,7 @@ h1 {
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 50px; /* Espaço maior antes do Arsenal */
 }
 
 .social-links a {
@@ -105,40 +104,51 @@ h1 {
     border-color: #111;
 }
 
-/* --- TECH STACK (FERRAMENTAS) --- */
-.tech-stack { text-align: center; margin-bottom: 60px; }
+/* --- TECH STACK (ARSENAL - REDESENHADO) --- */
+.tech-stack {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px;
+    /* Fundo sutil para agrupar */
+    background: rgba(0,0,0,0.2);
+    border-radius: 24px;
+}
+
 .stack-title { 
-    color: rgba(255,255,255,0.9); 
-    font-size: 0.95rem; 
+    color: #fff; 
+    font-size: 1.1rem; 
     text-transform: uppercase; 
-    letter-spacing: 2px; 
-    margin-bottom: 20px;
-    font-weight: 800;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 3px; 
+    margin-bottom: 25px;
+    font-weight: 900;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .icons-grid {
-    display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;
 }
 
 .tech-item {
-    background: rgba(255,255,255,0.25);
-    border: 1px solid rgba(255,255,255,0.6);
-    padding: 10px 20px;
-    border-radius: 12px;
-    color: #fff;
+    /* Design de Cápsula Brilhante */
+    background: rgba(255, 255, 255, 0.85); /* Fundo claro */
+    color: #111; /* Texto escuro para leitura */
+    border: 2px solid rgba(255, 255, 255, 1);
+    padding: 12px 24px;
+    border-radius: 50px; /* Bordas redondas */
     font-size: 0.95rem;
-    font-weight: 700;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s;
+    font-weight: 800;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: default;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* Glow roxo em volta */
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
 
 .tech-item:hover {
-    background: #fff; color: #000;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: #fff;
+    transform: translateY(-5px) scale(1.05);
+    /* Glow mais forte no hover */
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.7);
 }
 
 /* --- SEÇÕES & GRID --- */
@@ -242,20 +252,7 @@ h1 {
     text-transform: uppercase; letter-spacing: 0.5px;
 }
 
-/* --- WHATSAPP & FOOTER --- */
-.whatsapp-btn {
-    position: fixed; bottom: 30px; right: 30px;
-    width: 65px; height: 65px;
-    background-color: #25d366;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    z-index: 1000; transition: transform 0.3s;
-    border: 3px solid #fff;
-}
-.whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); }
-.whatsapp-btn img { width: 35px; height: 35px; }
-
+/* --- FOOTER --- */
 .site-footer {
     text-align: center; padding: 40px 20px; margin-top: 80px;
     border-top: 1px solid rgba(255,255,255,0.2);
