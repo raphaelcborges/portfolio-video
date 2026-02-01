@@ -11,7 +11,7 @@
 
     <header class="container">
         <div class="profile">
-            <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=0070f3&color=fff'" alt="Raphael Borges" class="avatar">
+            <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=0070f3&color=fff&size=128'" alt="Raphael Borges" class="avatar">
             <div>
                 <h1>Raphael Borges</h1>
                 <p class="subtitle">Editor de Vídeo & Engenheiro de Automação</p>
@@ -31,18 +31,18 @@
             
             <div class="project-card" data-video-id="DAXXWw_os9w" data-is-vertical="true">
                 <div class="thumb-wrapper vertical">
-                    <img src="https://via.placeholder.com/400x711/222222/0070f3?text=Capa+Vertical+Voymatch" alt="Voymatch App" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/DAXXWw_os9w/hqdefault.jpg" alt="Voymatch App" class="project-thumb">
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
-                    <h3>Voymatch - App Promocional (Shorts)</h3>
+                    <h3>Voymatch - App Promocional</h3>
                     <p>Motion Graphics e Apresentação de Produto.</p>
                 </div>
             </div>
 
             <div class="project-card" data-video-id="n9LmxGAgWN4">
                 <div class="thumb-wrapper">
-                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Pokemon+Kanto" alt="Desafio Pokémon" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/n9LmxGAgWN4/maxresdefault.jpg" alt="Desafio Pokémon" class="project-thumb">
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
@@ -53,7 +53,7 @@
 
             <div class="project-card" data-video-id="DGBm17POVG0">
                 <div class="thumb-wrapper">
-                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Pokemon+Johto" alt="Desafio Johto" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/DGBm17POVG0/maxresdefault.jpg" alt="Desafio Johto" class="project-thumb">
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
@@ -64,7 +64,7 @@
 
             <div class="project-card" data-video-id="qafkHYKR2AQ">
                 <div class="thumb-wrapper">
-                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Golpes" alt="Golpes Pokémon" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/qafkHYKR2AQ/maxresdefault.jpg" alt="Golpes Pokémon" class="project-thumb">
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
@@ -75,7 +75,7 @@
 
             <div class="project-card" data-video-id="VepjSKO6kH4">
                 <div class="thumb-wrapper">
-                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Vlog" alt="Vlog Teste" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/VepjSKO6kH4/maxresdefault.jpg" alt="Vlog Teste" class="project-thumb">
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
@@ -86,7 +86,7 @@
 
             <div class="project-card" data-video-id="lhyyyJnHDG8">
                 <div class="thumb-wrapper">
-                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Gameplay" alt="Gameplay paiN" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/lhyyyJnHDG8/maxresdefault.jpg" alt="Gameplay paiN" class="project-thumb">
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
@@ -116,14 +116,13 @@
                 const videoId = card.getAttribute('data-video-id');
                 const isVertical = card.getAttribute('data-is-vertical') === 'true';
 
-                // Ajusta o player para vertical ou horizontal
                 if (isVertical) {
                     modalContent.classList.add('vertical-mode');
                 } else {
                     modalContent.classList.remove('vertical-mode');
                 }
                 
-                // Carrega o vídeo com autoplay
+                // Carrega o vídeo
                 videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 modal.classList.add('active');
             });
@@ -131,11 +130,9 @@
 
         function fecharModal() {
             modal.classList.remove('active');
-            // Para o vídeo ao fechar
             setTimeout(() => { videoFrame.src = ''; }, 300);
         }
 
-        // Fecha ao clicar fora do vídeo
         modal.addEventListener('click', (e) => {
             if (e.target === modal) fecharModal();
         });
