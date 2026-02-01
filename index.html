@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raphael Borges | Portfólio Criativo</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="ambient-light"></div>
 
     <header class="container">
         <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=111&color=fff&size=256'" alt="Raphael Borges" class="avatar">
@@ -30,18 +28,32 @@
     </header>
 
     <main class="container">
-        <h2 class="section-title">Projetos Selecionados</h2>
+        
+        <div class="section-header">
+            <h2 class="section-title">Projetos Principais</h2>
+        </div>
         
         <div class="video-grid">
             
-            <div class="project-card tall" data-video-id="DAXXWw_os9w" data-is-vertical="true">
+            <div class="project-card wide" data-video-id="qafkHYKR2AQ">
                 <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/DAXXWw_os9w/hqdefault.jpg" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/qafkHYKR2AQ/maxresdefault.jpg" class="project-thumb">
                     <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
-                    <h3>Voymatch - App Promocional</h3>
-                    <p>Motion Graphics • Mobile</p>
+                    <h3>Os Golpes MAIS FORTES!</h3>
+                    <p>Assets Visuais • Roteiro Explicativo</p>
+                </div>
+            </div>
+
+            <div class="project-card wide" data-video-id="lhyyyJnHDG8">
+                <div class="thumb-wrapper">
+                    <img src="https://img.youtube.com/vi/lhyyyJnHDG8/maxresdefault.jpg" class="project-thumb">
+                    <div class="play-overlay"></div>
+                </div>
+                <div class="card-info">
+                    <h3>paiN dyNKas duo Cariok</h3>
+                    <p>Gameplay • Highlights</p>
                 </div>
             </div>
 
@@ -67,17 +79,6 @@
                 </div>
             </div>
 
-            <div class="project-card wide" data-video-id="qafkHYKR2AQ">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/qafkHYKR2AQ/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
-                </div>
-                <div class="card-info">
-                    <h3>Os Golpes MAIS FORTES!</h3>
-                    <p>Assets Visuais • Roteiro Explicativo</p>
-                </div>
-            </div>
-
             <div class="project-card wide" data-video-id="VepjSKO6kH4">
                 <div class="thumb-wrapper">
                     <img src="https://img.youtube.com/vi/VepjSKO6kH4/maxresdefault.jpg" class="project-thumb">
@@ -88,19 +89,28 @@
                     <p>Vlog Style • B-Rolls</p>
                 </div>
             </div>
+            
+        </div>
 
-            <div class="project-card wide" data-video-id="lhyyyJnHDG8">
+        <div class="section-header" style="margin-top: 80px;">
+            <h2 class="section-title">Shorts & Reels</h2>
+        </div>
+
+        <div class="shorts-grid">
+            
+            <div class="project-card" data-video-id="DAXXWw_os9w" data-is-vertical="true">
                 <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/lhyyyJnHDG8/maxresdefault.jpg" class="project-thumb">
+                    <img src="https://img.youtube.com/vi/DAXXWw_os9w/hqdefault.jpg" class="project-thumb">
                     <div class="play-overlay"></div>
                 </div>
                 <div class="card-info">
-                    <h3>paiN dyNKas duo Cariok</h3>
-                    <p>Gameplay • Highlights</p>
+                    <h3>Voymatch App</h3>
+                    <p>Motion Graphics • Mobile</p>
                 </div>
             </div>
-            
-        </div>
+
+            </div>
+
     </main>
 
     <div class="video-modal" id="videoModal">
@@ -131,3 +141,16 @@
                 modal.classList.add('active');
             });
         });
+
+        function fecharModal() {
+            modal.classList.remove('active');
+            setTimeout(() => { videoFrame.src = ''; }, 300);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) fecharModal();
+        });
+    </script>
+
+</body>
+</html>
