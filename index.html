@@ -9,93 +9,137 @@
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=3b82f6&color=fff&size=128'" alt="Raphael Borges" class="avatar">
-            
-            <h1>Raphael Borges</h1>
-            <p class="subtitle">Editor de Vídeo & Engenheiro de Automação</p>
-            
-            <div class="social-links">
-                <a href="#" target="_blank">Behance</a>
-                <a href="#" target="_blank">LinkedIn</a>
-                <a href="mailto:seuemail@email.com">Entrar em Contato</a>
+    <header class="container">
+        <div class="profile">
+            <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=0070f3&color=fff'" alt="Raphael Borges" class="avatar">
+            <div>
+                <h1>Raphael Borges</h1>
+                <p class="subtitle">Editor de Vídeo & Engenheiro de Automação</p>
             </div>
         </div>
+        <nav class="social-links">
+            <a href="#" target="_blank">Behance</a>
+            <a href="https://www.linkedin.com/in/raphaelcborges/" target="_blank">LinkedIn</a>
+            <a href="mailto:seuemail@email.com">Contato</a>
+        </nav>
     </header>
 
     <main class="container">
-        <h2>Projetos em Destaque</h2>
+        <h2 class="section-title">Trabalhos Selecionados</h2>
         
         <div class="video-grid">
             
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w" title="Vídeo Promocional" frameborder="0" allowfullscreen></iframe>
+            <div class="project-card" data-video-id="DAXXWw_os9w" data-is-vertical="true">
+                <div class="thumb-wrapper vertical">
+                    <img src="https://via.placeholder.com/400x711/222222/0070f3?text=Capa+Vertical+Voymatch" alt="Voymatch App" class="project-thumb">
+                    <div class="play-icon"></div>
                 </div>
-                <div class="card-content">
-                    <h3>Voymatch - App Promocional</h3>
+                <div class="card-info">
+                    <h3>Voymatch - App Promocional (Shorts)</h3>
                     <p>Motion Graphics e Apresentação de Produto.</p>
                 </div>
             </div>
 
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto" frameborder="0" allowfullscreen></iframe>
+            <div class="project-card" data-video-id="n9LmxGAgWN4">
+                <div class="thumb-wrapper">
+                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Pokemon+Kanto" alt="Desafio Pokémon" class="project-thumb">
+                    <div class="play-icon"></div>
                 </div>
-                <div class="card-content">
+                <div class="card-info">
                     <h3>Desafio Pokémon Kanto</h3>
                     <p>Edição dinâmica e efeitos visuais.</p>
                 </div>
             </div>
 
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto" frameborder="0" allowfullscreen></iframe>
+            <div class="project-card" data-video-id="DGBm17POVG0">
+                <div class="thumb-wrapper">
+                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Pokemon+Johto" alt="Desafio Johto" class="project-thumb">
+                    <div class="play-icon"></div>
                 </div>
-                <div class="card-content">
+                <div class="card-info">
                     <h3>Desafio Pokémon Johto</h3>
                     <p>Cortes rápidos e ritmo acelerado.</p>
                 </div>
             </div>
 
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ" title="Golpes Pokémon" frameborder="0" allowfullscreen></iframe>
+            <div class="project-card" data-video-id="qafkHYKR2AQ">
+                <div class="thumb-wrapper">
+                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Golpes" alt="Golpes Pokémon" class="project-thumb">
+                    <div class="play-icon"></div>
                 </div>
-                <div class="card-content">
+                <div class="card-info">
                     <h3>Explicação de Golpes</h3>
                     <p>Roteiro visual e inserção de assets.</p>
                 </div>
             </div>
 
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/VepjSKO6kH4" title="Vlog Teste" frameborder="0" allowfullscreen></iframe>
+            <div class="project-card" data-video-id="VepjSKO6kH4">
+                <div class="thumb-wrapper">
+                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Vlog" alt="Vlog Teste" class="project-thumb">
+                    <div class="play-icon"></div>
                 </div>
-                <div class="card-content">
+                <div class="card-info">
                     <h3>Vlog - Teste de Editor</h3>
                     <p>Storytelling e B-Rolls.</p>
                 </div>
             </div>
 
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="Gameplay paiN" frameborder="0" allowfullscreen></iframe>
+            <div class="project-card" data-video-id="lhyyyJnHDG8">
+                <div class="thumb-wrapper">
+                    <img src="https://via.placeholder.com/640x360/222222/ffffff?text=Thumb+Gameplay" alt="Gameplay paiN" class="project-thumb">
+                    <div class="play-icon"></div>
                 </div>
-                <div class="card-content">
+                <div class="card-info">
                     <h3>Gameplay - paiN Gaming</h3>
                     <p>Highlights de partida.</p>
                 </div>
             </div>
-
+            
         </div>
+    </main>
 
-        </main>
+    <div class="video-modal" id="videoModal">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <div class="modal-content" id="modalContent">
+            <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
 
-    <footer>
-        <p>© 2026 Raphael Borges. Todos os direitos reservados.</p>
-    </footer>
+    <script>
+        const modal = document.getElementById('videoModal');
+        const modalContent = document.getElementById('modalContent');
+        const videoFrame = document.getElementById('videoFrame');
+        const cards = document.querySelectorAll('.project-card');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.getAttribute('data-video-id');
+                const isVertical = card.getAttribute('data-is-vertical') === 'true';
+
+                // Ajusta o player para vertical ou horizontal
+                if (isVertical) {
+                    modalContent.classList.add('vertical-mode');
+                } else {
+                    modalContent.classList.remove('vertical-mode');
+                }
+                
+                // Carrega o vídeo com autoplay
+                videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                modal.classList.add('active');
+            });
+        });
+
+        function fecharModal() {
+            modal.classList.remove('active');
+            // Para o vídeo ao fechar
+            setTimeout(() => { videoFrame.src = ''; }, 300);
+        }
+
+        // Fecha ao clicar fora do vídeo
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) fecharModal();
+        });
+    </script>
 
 </body>
 </html>
