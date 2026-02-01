@@ -1,22 +1,61 @@
 :root {
-    --bg-dark: #050505;
-    --bg-card: rgba(255, 255, 255, 0.05); /* Efeito de vidro */
-    --border-card: rgba(255, 255, 255, 0.1);
-    --primary: #3b82f6; /* Azul Tech */
-    --primary-glow: rgba(59, 130, 246, 0.4);
+    --bg-dark: #0a0a0a;
     --text-main: #ffffff;
-    --text-muted: #a1a1aa;
+    --text-muted: #d4d4d8;
+    --glass-bg: rgba(20, 20, 20, 0.6); /* Vidro mais escuro para ler em cima das cores */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --primary-glow: #3b82f6;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg-dark);
-    /* Fundo com degradê sutil para não ficar aquele preto chapado */
-    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, var(--bg-dark) 70%);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
+    overflow-x: hidden; /* Impede rolagem lateral */
+    position: relative;
+}
+
+/* --- FUNDO COLORIDO (AS LUZES) --- */
+/* Cria manchas de cor roxa, azul e rosa no fundo */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(0,0,0,0) 70%); /* Roxo */
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.8;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(0,0,0,0) 70%); /* Azul */
+    filter: blur(100px);
+    z-index: -1;
+}
+
+/* Uma terceira luz para dar um toque extra no meio */
+.ambient-light {
+    position: fixed;
+    top: 40%;
+    left: 30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(219, 39, 119, 0.2) 0%, rgba(0,0,0,0) 70%); /* Rosa sutil */
+    filter: blur(90px);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -25,56 +64,49 @@ body {
     padding: 60px 20px;
 }
 
-/* --- HEADER & BIO --- */
+/* --- HEADER --- */
 header {
     text-align: center;
-    margin-bottom: 80px;
-    animation: fadeIn 1s ease;
-}
-
-.avatar-container {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
 }
 
 .avatar {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.1);
+    border: 3px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); /* Glow roxo na foto */
+    margin-bottom: 20px;
     object-fit: cover;
-    box-shadow: 0 0 30px var(--primary-glow); /* Glow atrás da foto */
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 800;
-    letter-spacing: -1px;
     margin-bottom: 10px;
-    background: linear-gradient(to right, #fff, #a5b4fc); /* Texto degradê */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .role-tag {
     display: inline-block;
-    background: rgba(59, 130, 246, 0.15);
-    color: #60a5fa;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.95rem;
     font-weight: 600;
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 25px;
+    color: #e0e7ff;
 }
 
 .bio {
-    max-width: 600px;
-    margin: 0 auto 30px;
+    max-width: 650px;
+    margin: 0 auto 35px;
     color: var(--text-muted);
     font-size: 1.1rem;
     line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* Sombra para ler melhor no fundo colorido */
 }
 
 .social-links {
@@ -84,35 +116,40 @@ h1 {
 }
 
 .social-links a {
-    color: var(--text-main);
+    color: #fff;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    border-bottom: 1px solid transparent;
+    font-weight: 600;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--primary);
-    border-color: var(--primary);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
 }
 
-/* --- GRID ESTILO "BENTO" (APPLE STYLE) --- */
+/* --- GRID BENTO --- */
+.section-title { margin-bottom: 20px; font-weight: 600; border-left: 4px solid #7c3aed; padding-left: 15px; }
+
 .video-grid {
     display: grid;
-    /* Colunas flexíveis de 300px */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     padding-bottom: 50px;
 }
 
-/* CARD PADRÃO */
+/* CARD COM EFEITO VIDRO */
 .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-card);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     overflow: hidden;
-    backdrop-filter: blur(10px); /* O efeito de vidro mágico */
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -120,65 +157,54 @@ h1 {
 
 .project-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+    border-color: rgba(124, 58, 237, 0.5); /* Borda roxa ao passar mouse */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
-/* LÓGICA DE TAMANHO DOS CARDS */
+/* Tamanhos dos Cards */
+.project-card.wide { grid-column: span 2; }
+.project-card.tall { grid-column: span 1; }
 
-/* Card Horizontal (YouTube) - Ocupa 2 colunas se houver espaço */
-.project-card.wide {
-    grid-column: span 2; 
-}
-
-/* Card Vertical (Shorts) - Ocupa 1 coluna (fica menor) */
-.project-card.tall {
-    grid-column: span 1;
-}
-
-/* Se a tela for pequena (celular), tudo vira 1 coluna */
 @media (max-width: 768px) {
     .project-card.wide { grid-column: span 1; }
     h1 { font-size: 2rem; }
 }
 
-/* THUMBNAILS */
+/* Thumbnails */
 .thumb-wrapper {
     position: relative;
     width: 100%;
-    /* Truque para manter proporção */
-    aspect-ratio: 16 / 9; 
+    aspect-ratio: 16 / 9;
     overflow: hidden;
 }
-
-.project-card.tall .thumb-wrapper {
-    aspect-ratio: 9 / 16; /* Shorts ficam mais altos */
-}
+.project-card.tall .thumb-wrapper { aspect-ratio: 9 / 16; }
 
 .project-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
-    transition: transform 0.5s;
-    filter: brightness(0.9);
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s; filter: brightness(0.9);
 }
+.project-card:hover .project-thumb { transform: scale(1.05); filter: brightness(1); }
 
-.project-card:hover .project-thumb {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+/* Play Icon Overlay */
+.play-overlay {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 50px; height: 50px; background: rgba(0,0,0,0.6); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);
+    opacity: 0; transition: opacity 0.3s;
 }
+.play-overlay::after { content: '▶'; color: white; font-size: 14px; margin-left: 3px; }
+.project-card:hover .play-overlay { opacity: 1; }
 
-/* INFO DO CARD */
+/* Texto do Card */
 .card-info {
-    padding: 20px;
+    padding: 18px;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    margin-top: auto; /* Empurra info para baixo */
+    margin-top: auto;
 }
+.card-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: #fff; }
+.card-info p { font-size: 0.85rem; color: #bbb; }
 
-.card-info h3 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; }
-.card-info p { font-size: 0.85rem; color: #ccc; }
-
-/* MODAL (Onde o vídeo toca) */
+/* MODAL */
 .video-modal {
     position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999;
     display: flex; align-items: center; justify-content: center;
@@ -188,11 +214,8 @@ h1 {
 .modal-content {
     width: 90%; max-width: 1000px; aspect-ratio: 16/9;
     background: #000; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 50px rgba(124, 58, 237, 0.3);
 }
 .modal-content.vertical-mode { max-width: 450px; aspect-ratio: 9/16; }
 iframe { width: 100%; height: 100%; }
 .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; }
-
-/* Animação de entrada */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
