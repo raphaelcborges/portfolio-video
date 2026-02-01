@@ -1,6 +1,6 @@
 :root {
-    --bg-main: #ffffff; /* Fundo CLARO */
-    --text-main: #111827; /* Texto ESCURO para leitura */
+    --bg-main: #ffffff;
+    --text-main: #111827; /* Texto escuro para contraste */
     --text-muted: #4b5563;
     
     /* Vidro Claro e Brilhante */
@@ -20,13 +20,13 @@ body {
     position: relative;
 }
 
-/* --- O FUNDO VIVO (LUZES COLORIDAS) --- */
+/* --- O FUNDO VIVO (AURORA BOREAL) --- */
 body::before {
     content: '';
     position: fixed;
     top: -10%; left: -10%;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, #67e8f9 0%, rgba(255,255,255,0) 70%); /* Ciano Vivo */
+    background: radial-gradient(circle, #67e8f9 0%, rgba(255,255,255,0) 70%); /* Ciano */
     filter: blur(80px);
     z-index: -1;
     opacity: 0.8;
@@ -37,18 +37,18 @@ body::after {
     position: fixed;
     bottom: -10%; right: -5%;
     width: 800px; height: 800px;
-    background: radial-gradient(circle, #f472b6 0%, rgba(255,255,255,0) 70%); /* Rosa Vivo */
+    background: radial-gradient(circle, #f472b6 0%, rgba(255,255,255,0) 70%); /* Rosa */
     filter: blur(100px);
     z-index: -1;
     opacity: 0.7;
 }
 
-/* Luz Roxa no Meio */
+/* Luz Roxa Central */
 .ambient-light {
     position: fixed;
     top: 40%; left: 50%; transform: translateX(-50%);
     width: 600px; height: 600px;
-    background: radial-gradient(circle, #a78bfa 0%, rgba(255,255,255,0) 70%); /* Roxo Suave */
+    background: radial-gradient(circle, #a78bfa 0%, rgba(255,255,255,0) 70%); /* Roxo */
     filter: blur(90px);
     z-index: -1;
 }
@@ -65,7 +65,7 @@ header { text-align: center; margin-bottom: 70px; }
 .avatar {
     width: 130px; height: 130px;
     border-radius: 50%;
-    border: 4px solid #fff; /* Borda branca limpa */
+    border: 4px solid #fff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     margin-bottom: 20px;
     object-fit: cover;
@@ -76,7 +76,6 @@ h1 {
     font-weight: 800;
     margin-bottom: 10px;
     letter-spacing: -1px;
-    /* Texto com leve degradê escuro */
     background: linear-gradient(to right, #111827, #4b5563);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -101,8 +100,7 @@ h1 {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    /* Botões pretos para alto contraste */
-    background: #111827;
+    background: #111827; /* Botões Pretos */
     padding: 12px 24px;
     border-radius: 50px;
     transition: all 0.3s;
@@ -126,7 +124,7 @@ h1 {
 }
 .section-title::before {
     content: ''; position: absolute; left: 0; top: 5px; bottom: 5px; width: 5px;
-    background: linear-gradient(to bottom, #2563eb, #ec4899); /* Barra colorida lateral */
+    background: linear-gradient(to bottom, #2563eb, #ec4899);
     border-radius: 10px;
 }
 
@@ -137,14 +135,14 @@ h1 {
     padding-bottom: 50px;
 }
 
-/* CARD BRANCO/VIDRO */
+/* CARD VIDRO */
 .project-card {
     background: var(--glass-bg);
     border: 1px solid #fff;
     border-radius: 20px;
     overflow: hidden;
     backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-soft); /* Sombra suave */
+    box-shadow: var(--shadow-soft);
     transition: all 0.3s ease;
     cursor: pointer;
     display: flex; flex-direction: column;
@@ -153,10 +151,10 @@ h1 {
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15);
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
 }
 
-/* Tamanhos */
+/* TAMANHOS (Wide = Grande, Tall = Vertical) */
 .project-card.wide { grid-column: span 2; }
 .project-card.tall { grid-column: span 1; }
 
@@ -165,7 +163,7 @@ h1 {
     h1 { font-size: 2.2rem; }
 }
 
-/* Thumbnails */
+/* THUMBNAILS */
 .thumb-wrapper {
     position: relative;
     width: 100%; aspect-ratio: 16 / 9;
@@ -179,34 +177,31 @@ h1 {
 }
 .project-card:hover .project-thumb { transform: scale(1.08); }
 
-/* Botão Play (Mais visível agora) */
+/* Play Button */
 .play-overlay {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 60px; height: 60px;
-    background: rgba(255,255,255,0.9); /* Branco */
+    background: rgba(255,255,255,0.9);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     opacity: 0; transition: all 0.3s;
-    transform: translate(-50%, -40%); /* Efeito de subir */
+    transform: translate(-50%, -40%);
 }
-.play-overlay::after {
-    content: '▶'; color: #111; font-size: 18px; margin-left: 4px;
-}
+.play-overlay::after { content: '▶'; color: #111; font-size: 18px; margin-left: 4px; }
 .project-card:hover .play-overlay { opacity: 1; transform: translate(-50%, -50%); }
 
-/* Info do Card */
+/* Info Area */
 .card-info {
     padding: 22px;
-    /* Fundo branco sólido para ler bem o texto */
-    background: #fff; 
+    background: #fff;
     margin-top: auto;
     border-top: 1px solid #f3f4f6;
 }
-.card-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: #111; font-weight: 700; }
+.card-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: #111; font-weight: 700; line-height: 1.4; }
 .card-info p { font-size: 0.9rem; color: #6b7280; }
 
-/* MODAL */
+/* MODAL VIDEO */
 .video-modal {
     position: fixed; inset: 0; background: rgba(255,255,255,0.9); z-index: 999;
     display: flex; align-items: center; justify-content: center;
@@ -223,8 +218,7 @@ h1 {
 iframe { width: 100%; height: 100%; }
 .close-modal {
     position: absolute; top: 20px; right: 30px;
-    color: #111; /* X preto */
-    font-size: 2.5rem; cursor: pointer;
+    color: #111; font-size: 2.5rem; cursor: pointer;
     background: rgba(255,255,255,0.5); border-radius: 50%; width: 50px; height: 50px;
     display: flex; align-items: center; justify-content: center;
 }
