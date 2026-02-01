@@ -1,33 +1,32 @@
 :root {
-    --bg-dark: #0a0a0a;
-    --text-main: #ffffff;
-    --text-muted: #d4d4d8;
-    --glass-bg: rgba(20, 20, 20, 0.6); /* Vidro mais escuro para ler em cima das cores */
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --primary-glow: #3b82f6;
+    --bg-main: #ffffff; /* Fundo CLARO */
+    --text-main: #111827; /* Texto ESCURO para leitura */
+    --text-muted: #4b5563;
+    
+    /* Vidro Claro e Brilhante */
+    --glass-bg: rgba(255, 255, 255, 0.6); 
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-main);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
-    overflow-x: hidden; /* Impede rolagem lateral */
+    overflow-x: hidden;
     position: relative;
 }
 
-/* --- FUNDO COLORIDO (AS LUZES) --- */
-/* Cria manchas de cor roxa, azul e rosa no fundo */
+/* --- O FUNDO VIVO (LUZES COLORIDAS) --- */
 body::before {
     content: '';
     position: fixed;
-    top: -20%;
-    left: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(0,0,0,0) 70%); /* Roxo */
+    top: -10%; left: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, #67e8f9 0%, rgba(255,255,255,0) 70%); /* Ciano Vivo */
     filter: blur(80px);
     z-index: -1;
     opacity: 0.8;
@@ -36,26 +35,22 @@ body::before {
 body::after {
     content: '';
     position: fixed;
-    bottom: -10%;
-    right: -5%;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(0,0,0,0) 70%); /* Azul */
+    bottom: -10%; right: -5%;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, #f472b6 0%, rgba(255,255,255,0) 70%); /* Rosa Vivo */
     filter: blur(100px);
     z-index: -1;
+    opacity: 0.7;
 }
 
-/* Uma terceira luz para dar um toque extra no meio */
+/* Luz Roxa no Meio */
 .ambient-light {
     position: fixed;
-    top: 40%;
-    left: 30%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(219, 39, 119, 0.2) 0%, rgba(0,0,0,0) 70%); /* Rosa sutil */
+    top: 40%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #a78bfa 0%, rgba(255,255,255,0) 70%); /* Roxo Suave */
     filter: blur(90px);
     z-index: -1;
-    pointer-events: none;
 }
 
 .container {
@@ -65,157 +60,171 @@ body::after {
 }
 
 /* --- HEADER --- */
-header {
-    text-align: center;
-    margin-bottom: 70px;
-}
+header { text-align: center; margin-bottom: 70px; }
 
 .avatar {
-    width: 130px;
-    height: 130px;
+    width: 130px; height: 130px;
     border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); /* Glow roxo na foto */
+    border: 4px solid #fff; /* Borda branca limpa */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     margin-bottom: 20px;
     object-fit: cover;
 }
 
 h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: 800;
     margin-bottom: 10px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-
-.role-tag {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 25px;
-    color: #e0e7ff;
+    letter-spacing: -1px;
+    /* Texto com leve degradê escuro */
+    background: linear-gradient(to right, #111827, #4b5563);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .bio {
     max-width: 650px;
     margin: 0 auto 35px;
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.6;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* Sombra para ler melhor no fundo colorido */
+    font-weight: 500;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .social-links a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    background: rgba(0,0,0,0.3);
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: 1px solid transparent;
+    /* Botões pretos para alto contraste */
+    background: #111827;
+    padding: 12px 24px;
+    border-radius: 50px;
     transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .social-links a:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.4);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    background: #2563eb; /* Azul ao passar o mouse */
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
 }
 
-/* --- GRID BENTO --- */
-.section-title { margin-bottom: 20px; font-weight: 600; border-left: 4px solid #7c3aed; padding-left: 15px; }
+/* --- GRID --- */
+.section-title {
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111;
+    position: relative;
+    padding-left: 20px;
+}
+.section-title::before {
+    content: ''; position: absolute; left: 0; top: 5px; bottom: 5px; width: 5px;
+    background: linear-gradient(to bottom, #2563eb, #ec4899); /* Barra colorida lateral */
+    border-radius: 10px;
+}
 
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 30px;
     padding-bottom: 50px;
 }
 
-/* CARD COM EFEITO VIDRO */
+/* CARD BRANCO/VIDRO */
 .project-card {
     background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
+    border: 1px solid #fff;
+    border-radius: 20px;
     overflow: hidden;
-    backdrop-filter: blur(12px);
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-soft); /* Sombra suave */
+    transition: all 0.3s ease;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(124, 58, 237, 0.5); /* Borda roxa ao passar mouse */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15);
+    background: rgba(255,255,255,0.85);
 }
 
-/* Tamanhos dos Cards */
+/* Tamanhos */
 .project-card.wide { grid-column: span 2; }
 .project-card.tall { grid-column: span 1; }
 
 @media (max-width: 768px) {
     .project-card.wide { grid-column: span 1; }
-    h1 { font-size: 2rem; }
+    h1 { font-size: 2.2rem; }
 }
 
 /* Thumbnails */
 .thumb-wrapper {
     position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
+    width: 100%; aspect-ratio: 16 / 9;
     overflow: hidden;
 }
 .project-card.tall .thumb-wrapper { aspect-ratio: 9 / 16; }
 
 .project-thumb {
     width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s; filter: brightness(0.9);
+    transition: transform 0.6s;
 }
-.project-card:hover .project-thumb { transform: scale(1.05); filter: brightness(1); }
+.project-card:hover .project-thumb { transform: scale(1.08); }
 
-/* Play Icon Overlay */
+/* Botão Play (Mais visível agora) */
 .play-overlay {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 50px; height: 50px; background: rgba(0,0,0,0.6); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);
-    opacity: 0; transition: opacity 0.3s;
+    width: 60px; height: 60px;
+    background: rgba(255,255,255,0.9); /* Branco */
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    opacity: 0; transition: all 0.3s;
+    transform: translate(-50%, -40%); /* Efeito de subir */
 }
-.play-overlay::after { content: '▶'; color: white; font-size: 14px; margin-left: 3px; }
-.project-card:hover .play-overlay { opacity: 1; }
+.play-overlay::after {
+    content: '▶'; color: #111; font-size: 18px; margin-left: 4px;
+}
+.project-card:hover .play-overlay { opacity: 1; transform: translate(-50%, -50%); }
 
-/* Texto do Card */
+/* Info do Card */
 .card-info {
-    padding: 18px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 22px;
+    /* Fundo branco sólido para ler bem o texto */
+    background: #fff; 
     margin-top: auto;
+    border-top: 1px solid #f3f4f6;
 }
-.card-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: #fff; }
-.card-info p { font-size: 0.85rem; color: #bbb; }
+.card-info h3 { font-size: 1.1rem; margin-bottom: 4px; color: #111; font-weight: 700; }
+.card-info p { font-size: 0.9rem; color: #6b7280; }
 
 /* MODAL */
 .video-modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999;
+    position: fixed; inset: 0; background: rgba(255,255,255,0.9); z-index: 999;
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
 }
 .video-modal.active { opacity: 1; pointer-events: all; }
 .modal-content {
     width: 90%; max-width: 1000px; aspect-ratio: 16/9;
-    background: #000; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 0 50px rgba(124, 58, 237, 0.3);
+    background: #000; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 .modal-content.vertical-mode { max-width: 450px; aspect-ratio: 9/16; }
 iframe { width: 100%; height: 100%; }
-.close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; }
+.close-modal {
+    position: absolute; top: 20px; right: 30px;
+    color: #111; /* X preto */
+    font-size: 2.5rem; cursor: pointer;
+    background: rgba(255,255,255,0.5); border-radius: 50%; width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+}
