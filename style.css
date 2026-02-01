@@ -1,67 +1,140 @@
-/* Reset básico */
+/* RESET E VARIÁVEIS */
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #161616;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #3b82f6; /* Azul Tech */
+    --accent-glow: rgba(59, 130, 246, 0.5);
+    --gradient-header: linear-gradient(180deg, rgba(59,130,246,0.1) 0%, rgba(10,10,10,0) 100%);
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: #121212; /* Fundo escuro estilo Premiere/DaVinci */
-    color: #e0e0e0;
-    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* CONTAINER */
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO COM DEGRADÊ */
 header {
     text-align: center;
-    padding: 60px 0 40px;
+    padding: 80px 0 60px;
+    background: var(--gradient-header);
+    margin-bottom: 20px;
 }
 
 .avatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 2px solid #00d4ff; /* Cor de destaque */
-    margin-bottom: 15px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-glow); /* Brilho neon na foto */
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* LINKS SOCIAIS (BOTÕES) */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .social-links a {
-    color: #00d4ff;
+    color: var(--text-primary);
     text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    transition: all 0.2s ease;
 }
 
-/* Grid de Vídeos */
+.social-links a:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+/* TÍTULOS DAS SEÇÕES */
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+    color: var(--text-primary);
+}
+
+/* GRID DE VÍDEOS */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo automático */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 30px;
-    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
+/* CARD DO VÍDEO (ESTILO MODERNO) */
 .video-card {
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 8px;
-    transition: transform 0.2s;
+    background: var(--card-bg);
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .video-card:hover {
-    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* O TRUQUE DO EMBED RESPONSIVO */
+.card-content {
+    padding: 15px;
+}
+
+.video-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.video-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* EMBED RESPONSIVO */
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    padding-bottom: 56.25%; /* 16:9 */
     height: 0;
-    overflow: hidden;
-    border-radius: 4px;
-    margin-bottom: 15px;
+    background: #000;
 }
 
 .video-wrapper iframe {
@@ -72,20 +145,37 @@ header {
     height: 100%;
 }
 
-h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
-p { font-size: 0.9rem; color: #aaa; }
-
-footer { text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.5; }
-
-/* --- ADIÇÃO PARA VÍDEOS VERTICAIS --- */
-
-/* Proporção 9:16 (TikTok/Reels) */
+/* VÍDEOS VERTICAIS (TIKTOK/REELS) */
 .video-wrapper.vertical {
-    padding-bottom: 177.77%; /* O segredo matemático: (16 / 9) * 100 */
+    padding-bottom: 177.77%; /* 9:16 */
 }
 
-/* Opcional: Limita a largura do card vertical para não ficar gigante na tela do PC */
 .video-card.vertical-card {
-    max-width: 350px; /* Mantém ele mais estreito, parecido com um celular */
-    margin: 0 auto;   /* Centraliza se sobrar espaço */
+    max-width: 320px;
+    margin: 0 auto; /* Centraliza no grid se sobrar espaço */
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #222;
+    color: #555;
+    font-size: 0.8rem;
+    margin-top: 40px;
+}
+
+/* DIVISÓRIA */
+hr {
+    border: 0;
+    height: 1px;
+    background: #222;
+    margin: 60px 0;
+}
+
+/* RESPONSIVO CELULAR */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .video-grid { grid-template-columns: 1fr; }
+    .video-card.vertical-card { max-width: 100%; }
 }
