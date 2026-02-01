@@ -1,138 +1,198 @@
 :root {
-    --bg-main: #0a0a0a;
-    --bg-card: #141414;
-    --text-primary: #ffffff;
-    --text-secondary: #b3b3b3;
-    --accent: #0070f3; /* Azul vibrante para destaque */
+    --bg-dark: #050505;
+    --bg-card: rgba(255, 255, 255, 0.05); /* Efeito de vidro */
+    --border-card: rgba(255, 255, 255, 0.1);
+    --primary: #3b82f6; /* Azul Tech */
+    --primary-glow: rgba(59, 130, 246, 0.4);
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-dark);
+    /* Fundo com degradê sutil para não ficar aquele preto chapado */
+    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, var(--bg-dark) 70%);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
 }
 
-/* HEADER */
+/* --- HEADER & BIO --- */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 40px;
-    border-bottom: 1px solid #222;
-    margin-bottom: 40px;
+    text-align: center;
+    margin-bottom: 80px;
+    animation: fadeIn 1s ease;
 }
 
-.profile { display: flex; align-items: center; gap: 20px; }
-.avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--accent); }
-h1 { font-size: 1.8rem; letter-spacing: -0.5px; }
-.subtitle { color: var(--text-secondary); font-size: 0.9rem; }
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.1);
+    object-fit: cover;
+    box-shadow: 0 0 30px var(--primary-glow); /* Glow atrás da foto */
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #fff, #a5b4fc); /* Texto degradê */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.role-tag {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    margin-bottom: 25px;
+}
+
+.bio {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
 .social-links a {
-    color: var(--text-secondary);
+    color: var(--text-main);
     text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: color 0.2s;
+    font-weight: 500;
+    transition: color 0.3s;
+    border-bottom: 1px solid transparent;
 }
-.social-links a:hover { color: var(--accent); }
 
-/* GRID DE PROJETOS */
-.section-title { font-size: 1.2rem; margin-bottom: 25px; color: var(--text-primary); }
+.social-links a:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
 
+/* --- GRID ESTILO "BENTO" (APPLE STYLE) --- */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+    /* Colunas flexíveis de 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding-bottom: 50px;
 }
 
-/* CARD DO PROJETO (THUMBNAIL) */
+/* CARD PADRÃO */
 .project-card {
     background: var(--bg-card);
-    border-radius: 12px;
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(10px); /* O efeito de vidro mágico */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
     cursor: pointer;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px -10px rgba(0, 112, 243, 0.3);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
 }
 
+/* LÓGICA DE TAMANHO DOS CARDS */
+
+/* Card Horizontal (YouTube) - Ocupa 2 colunas se houver espaço */
+.project-card.wide {
+    grid-column: span 2; 
+}
+
+/* Card Vertical (Shorts) - Ocupa 1 coluna (fica menor) */
+.project-card.tall {
+    grid-column: span 1;
+}
+
+/* Se a tela for pequena (celular), tudo vira 1 coluna */
+@media (max-width: 768px) {
+    .project-card.wide { grid-column: span 1; }
+    h1 { font-size: 2rem; }
+}
+
+/* THUMBNAILS */
 .thumb-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    width: 100%;
+    /* Truque para manter proporção */
+    aspect-ratio: 16 / 9; 
     overflow: hidden;
 }
 
-/* Para Shorts, use esta classe */
-.thumb-wrapper.vertical { padding-bottom: 177.77%; /* 9:16 */ }
+.project-card.tall .thumb-wrapper {
+    aspect-ratio: 9 / 16; /* Shorts ficam mais altos */
+}
 
 .project-thumb {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s, opacity 0.3s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+    transition: transform 0.5s;
+    filter: brightness(0.9);
 }
 
-.project-card:hover .project-thumb { transform: scale(1.05); opacity: 0.7; }
-
-/* Ícone de Play sobre a thumb */
-.play-icon {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    width: 50px; height: 50px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.project-card:hover .project-thumb {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
-.play-icon::before {
-    content: '';
-    border-style: solid;
-    border-width: 10px 0 10px 16px;
-    border-color: transparent transparent transparent white;
-    margin-left: 4px;
+
+/* INFO DO CARD */
+.card-info {
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    margin-top: auto; /* Empurra info para baixo */
 }
-.project-card:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
-.card-info { padding: 15px; }
-.card-info h3 { font-size: 1rem; margin-bottom: 5px; }
-.card-info p { font-size: 0.85rem; color: var(--text-secondary); }
+.card-info h3 { font-size: 1.1rem; margin-bottom: 5px; color: #fff; }
+.card-info p { font-size: 0.85rem; color: #ccc; }
 
-/* MODAL DE VÍDEO (POP-UP) */
+/* MODAL (Onde o vídeo toca) */
 .video-modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9); z-index: 100;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999;
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none; transition: opacity 0.3s;
 }
 .video-modal.active { opacity: 1; pointer-events: all; }
-
 .modal-content {
-    position: relative; width: 90%; max-width: 900px;
-    aspect-ratio: 16/9; /* Padrão horizontal */
+    width: 90%; max-width: 1000px; aspect-ratio: 16/9;
     background: #000; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
 }
-/* Classe para mudar o modal para vertical */
-.modal-content.vertical-mode { max-width: 500px; aspect-ratio: 9/16; }
+.modal-content.vertical-mode { max-width: 450px; aspect-ratio: 9/16; }
+iframe { width: 100%; height: 100%; }
+.close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; }
 
-.modal-content iframe { width: 100%; height: 100%; }
-
-.close-modal {
-    position: absolute; top: 20px; right: 30px;
-    color: white; font-size: 2rem; cursor: pointer; z-index: 101;
-}
+/* Animação de entrada */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
