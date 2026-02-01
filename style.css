@@ -1,14 +1,15 @@
 /* --- VARIÁVEIS --- */
 :root {
-    --text-main: #111827; /* Texto preto para contraste máximo */
+    --text-main: #111827; /* Texto preto para leitura perfeita */
     --text-muted: #374151;
     
-    /* Vidro mais OPACO e forte para contraste contra o fundo vivo */
-    --glass-bg: rgba(255, 255, 255, 0.7); 
+    /* Vidro FORTE e OPACO para não sumir no fundo colorido */
+    --glass-bg: rgba(255, 255, 255, 0.75); 
     --glass-border: rgba(255, 255, 255, 0.9);
-    /* Sombra mais forte para "descolar" o card do fundo */
     --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.2);
-    --primary-color: #6366f1; /* Cor de destaque para botões/ícones */
+    
+    --primary-color: #4f46e5; /* Roxo Indigo para botões */
+    --accent-color: #10b981;  /* Verde para destaques */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,19 +19,19 @@ body {
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
     
-    /* --- FUNDO SUPER COLORIDO E VIBRANTE (NEON MESH) --- */
-    background-color: #0f172a; /* Base escura para as cores saltarem */
+    /* --- FUNDO NEON MESH ANIMADO --- */
+    background-color: #0f172a;
     background-image: 
-        radial-gradient(at 0% 0%, hsla(258, 90%, 66%, 1) 0px, transparent 50%), /* Roxo Vibrante */
-        radial-gradient(at 100% 0%, hsla(343, 87%, 55%, 1) 0px, transparent 50%), /* Rosa Pink */
-        radial-gradient(at 100% 100%, hsla(199, 89%, 48%, 1) 0px, transparent 50%), /* Ciano Neon */
-        radial-gradient(at 0% 100%, hsla(33, 100%, 57%, 1) 0px, transparent 50%); /* Laranja Vivo */
-    background-size: 200% 200%; /* Tamanho maior para movimento suave */
-    animation: gradientBG 20s ease infinite alternate; /* Animação lenta e contínua */
+        radial-gradient(at 0% 0%, hsla(258, 90%, 66%, 1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(343, 87%, 55%, 1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(199, 89%, 48%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(33, 100%, 57%, 1) 0px, transparent 50%);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite alternate;
 }
 
-/* Animação do fundo */
 @keyframes gradientBG {
     0% { background-position: 0% 0%; }
     100% { background-position: 100% 100%; }
@@ -43,7 +44,7 @@ body {
 }
 
 /* --- HEADER --- */
-header { text-align: center; margin-bottom: 70px; }
+header { text-align: center; margin-bottom: 50px; }
 
 .avatar {
     width: 150px; height: 150px;
@@ -60,18 +61,17 @@ h1 {
     font-weight: 900;
     margin-bottom: 15px;
     letter-spacing: -1.5px;
-    color: #fff; /* Título branco para destaque total */
+    color: #fff;
     text-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .bio {
     max-width: 700px;
-    margin: 0 auto 35px;
+    margin: 0 auto 30px;
     color: #1f2937;
     font-size: 1.2rem;
     font-weight: 600;
-    /* Fundo da bio mais opaco para leitura fácil */
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.7);
     padding: 20px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
@@ -83,14 +83,15 @@ h1 {
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .social-links a {
     color: #fff;
     text-decoration: none;
     font-weight: 700;
-    background: #111; /* Botões pretos sólidos */
-    padding: 14px 30px;
+    background: #111;
+    padding: 12px 28px;
     border-radius: 50px;
     transition: all 0.3s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
@@ -104,134 +105,51 @@ h1 {
     border-color: #111;
 }
 
-/* --- SEÇÕES --- */
+/* --- TECH STACK (FERRAMENTAS) --- */
+.tech-stack { text-align: center; margin-bottom: 60px; }
+.stack-title { 
+    color: rgba(255,255,255,0.9); 
+    font-size: 0.95rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.icons-grid {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;
+}
+
+.tech-item {
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 10px 20px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+    cursor: default;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tech-item:hover {
+    background: #fff; color: #000;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* --- SEÇÕES & GRID --- */
 .section-header {
-    margin: 70px 0 30px;
+    margin: 60px 0 30px;
     display: flex; align-items: center;
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: #fff; /* Títulos das seções em branco */
+    color: #fff;
     text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    background: rgba(0,0,0,0.2); /* Fundo sutil escuro */
-    padding: 10px 25px;
-    border-radius: 16px;
-    backdrop-filter: blur(5px);
-}
-
-/* GRID PRINCIPAL (2 por linha em desktop) */
-.video-grid {
-    display: grid;
-    /* Garante 2 colunas em telas médias/grandes, 1 em celular */
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 35px;
-}
-
-/* Grid Shorts (cards menores) */
-.shorts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 25px;
-}
-
-/* MEDIA QUERY PARA CELULAR */
-@media (max-width: 768px) {
-    .video-grid { grid-template-columns: 1fr; } /* 1 por linha no celular */
-    h1 { font-size: 2.5rem; }
-}
-
-/* --- CARD DESIGN (VIDRO FORTE) --- */
-.project-card {
-    background: var(--glass-bg); /* Vidro mais forte */
-    border: 2px solid var(--glass-border);
-    border-radius: 24px;
-    overflow: hidden;
-    backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-soft);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    display: flex; flex-direction: column;
-}
-
-.project-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    background: rgba(255,255,255,0.95); /* Quase branco sólido no hover */
-    box-shadow: 0 30px 70px rgba(0,0,0,0.3);
-    border-color: #fff;
-}
-
-/* CARD WIDE (Ocupa o espaço disponível no grid principal) */
-.project-card.wide { grid-column: span 1; }
-
-/* THUMBNAILS */
-.thumb-wrapper {
-    position: relative;
-    width: 100%; aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-bottom: 2px solid rgba(255,255,255,0.5);
-}
-/* Thumb vertical para Shorts */
-.shorts-grid .thumb-wrapper { aspect-ratio: 9 / 16; }
-
-.project-thumb {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s ease-in-out;
-}
-.project-card:hover .project-thumb { transform: scale(1.1); }
-
-/* Play Button Overlay */
-.play-overlay {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 80px; height: 80px;
-    background: #fff;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    opacity: 0; transition: all 0.3s ease;
-    transform: translate(-50%, -20%) scale(0.8);
-}
-.play-overlay::after { content: '▶'; color: var(--primary-color); font-size: 30px; margin-left: 6px; }
-.project-card:hover .play-overlay { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
-/* Info Area */
-.card-info {
-    padding: 25px;
-    background: rgba(255,255,255,0.6); /* Fundo mais sólido */
-    margin-top: auto;
-}
-.card-info h3 {
-    font-size: 1.3rem; margin-bottom: 8px; color: #000;
-    font-weight: 900; line-height: 1.2;
-}
-.card-info p {
-    font-size: 1rem; color: #444; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.5px;
-}
-
-/* --- MODAL VIDEO --- */
-.video-modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-    backdrop-filter: blur(15px);
-}
-.video-modal.active { opacity: 1; pointer-events: all; }
-.modal-content {
-    width: 90%; max-width: 1000px; aspect-ratio: 16/9;
-    background: #000; border-radius: 24px; overflow: hidden;
-    box-shadow: 0 50px 100px rgba(0,0,0,0.5);
-    border: 4px solid rgba(255,255,255,0.2);
-}
-.modal-content.vertical-mode { max-width: 450px; aspect-ratio: 9/16; }
-iframe { width: 100%; height: 100%; }
-.close-modal {
-    position: absolute; top: 30px; right: 40px;
-    color: #fff; font-size: 2.5rem; cursor: pointer;
-    background: var(--primary-color); border-radius: 50%; width: 70px; height: 70px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.2s, background 0.2s;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-.close-modal:hover { transform: scale(1.1) rotate(90deg); background: #fff; color: var(--primary-color); }
+    background: rgba(0
