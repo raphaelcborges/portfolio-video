@@ -1,181 +1,138 @@
-/* RESET E VARIÁVEIS */
 :root {
-    --bg-color: #0a0a0a;
-    --card-bg: #161616;
+    --bg-main: #0a0a0a;
+    --bg-card: #141414;
     --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --accent-color: #3b82f6; /* Azul Tech */
-    --accent-glow: rgba(59, 130, 246, 0.5);
-    --gradient-header: linear-gradient(180deg, rgba(59,130,246,0.1) 0%, rgba(10,10,10,0) 100%);
+    --text-secondary: #b3b3b3;
+    --accent: #0070f3; /* Azul vibrante para destaque */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-main);
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* CONTAINER */
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 40px 20px;
 }
 
-/* CABEÇALHO COM DEGRADÊ */
+/* HEADER */
 header {
-    text-align: center;
-    padding: 80px 0 60px;
-    background: var(--gradient-header);
-    margin-bottom: 20px;
-}
-
-.avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-glow); /* Brilho neon na foto */
-    margin-bottom: 20px;
-    object-fit: cover;
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-    letter-spacing: -1px;
-}
-
-.subtitle {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
-
-/* LINKS SOCIAIS (BOTÕES) */
-.social-links {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #222;
+    margin-bottom: 40px;
 }
+
+.profile { display: flex; align-items: center; gap: 20px; }
+.avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--accent); }
+h1 { font-size: 1.8rem; letter-spacing: -0.5px; }
+.subtitle { color: var(--text-secondary); font-size: 0.9rem; }
 
 .social-links a {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.9rem;
+    margin-left: 20px;
     font-weight: 600;
-    padding: 8px 16px;
-    border: 1px solid #333;
-    border-radius: 20px;
-    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    transition: color 0.2s;
 }
+.social-links a:hover { color: var(--accent); }
 
-.social-links a:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px var(--accent-glow);
-    transform: translateY(-2px);
-}
+/* GRID DE PROJETOS */
+.section-title { font-size: 1.2rem; margin-bottom: 25px; color: var(--text-primary); }
 
-/* TÍTULOS DAS SEÇÕES */
-h2 {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    border-left: 4px solid var(--accent-color);
-    padding-left: 15px;
-    color: var(--text-primary);
-}
-
-/* GRID DE VÍDEOS */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
-/* CARD DO VÍDEO (ESTILO MODERNO) */
-.video-card {
-    background: var(--card-bg);
-    border: 1px solid #222;
+/* CARD DO PROJETO (THUMBNAIL) */
+.project-card {
+    background: var(--bg-card);
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.video-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.card-content {
-    padding: 15px;
-}
-
-.video-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.video-card p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-/* EMBED RESPONSIVO */
-.video-wrapper {
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    background: #000;
 }
 
-.video-wrapper iframe {
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px -10px rgba(0, 112, 243, 0.3);
+}
+
+.thumb-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    overflow: hidden;
+}
+
+/* Para Shorts, use esta classe */
+.thumb-wrapper.vertical { padding-bottom: 177.77%; /* 9:16 */ }
+
+.project-thumb {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
-/* VÍDEOS VERTICAIS (TIKTOK/REELS) */
-.video-wrapper.vertical {
-    padding-bottom: 177.77%; /* 9:16 */
-}
+.project-card:hover .project-thumb { transform: scale(1.05); opacity: 0.7; }
 
-.video-card.vertical-card {
-    max-width: 320px;
-    margin: 0 auto; /* Centraliza no grid se sobrar espaço */
+/* Ícone de Play sobre a thumb */
+.play-icon {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 50px; height: 50px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-/* RODAPÉ */
-footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid #222;
-    color: #555;
-    font-size: 0.8rem;
-    margin-top: 40px;
+.play-icon::before {
+    content: '';
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent white;
+    margin-left: 4px;
 }
+.project-card:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
-/* DIVISÓRIA */
-hr {
-    border: 0;
-    height: 1px;
-    background: #222;
-    margin: 60px 0;
+.card-info { padding: 15px; }
+.card-info h3 { font-size: 1rem; margin-bottom: 5px; }
+.card-info p { font-size: 0.85rem; color: var(--text-secondary); }
+
+/* MODAL DE VÍDEO (POP-UP) */
+.video-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
 }
+.video-modal.active { opacity: 1; pointer-events: all; }
 
-/* RESPONSIVO CELULAR */
-@media (max-width: 600px) {
-    h1 { font-size: 2rem; }
-    .video-grid { grid-template-columns: 1fr; }
-    .video-card.vertical-card { max-width: 100%; }
+.modal-content {
+    position: relative; width: 90%; max-width: 900px;
+    aspect-ratio: 16/9; /* Padrão horizontal */
+    background: #000; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+/* Classe para mudar o modal para vertical */
+.modal-content.vertical-mode { max-width: 500px; aspect-ratio: 9/16; }
+
+.modal-content iframe { width: 100%; height: 100%; }
+
+.close-modal {
+    position: absolute; top: 20px; right: 30px;
+    color: white; font-size: 2rem; cursor: pointer; z-index: 101;
 }
