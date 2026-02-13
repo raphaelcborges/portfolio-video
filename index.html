@@ -3,185 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raphael Borges | Portfólio Criativo</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>Portfólio de Edição | [Seu Nome]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilização Básica */
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent-color: #ff0000; /* Vermelho YouTube */
+            --gray-text: #aaaaaa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        header h1 { margin: 10px 0; font-size: 2.5rem; }
+        header p { color: var(--gray-text); font-size: 1.1rem; }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover { color: var(--accent-color); }
+
+        /* Grid de Vídeos */
+        h2 {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-card h3 {
+            padding: 15px 15px 5px 15px;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .video-card p {
+            padding: 0 15px 15px 15px;
+            margin: 0;
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray-text);
+            font-size: 0.8rem;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        hr { border: 0; border-top: 1px solid #333; margin: 50px 0; }
+    </style>
 </head>
 <body>
 
-    <header class="container">
-        <img src="assets/perfil.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Raphael+Borges&background=111&color=fff&size=256'" alt="Raphael Borges" class="avatar">
-        
-        <h1>Raphael Borges</h1>
-        
-        <p class="bio">
-            Editor de Vídeo especializado em cortes dinâmicos e conteúdo viral.
-            <br>
-            Estudante de Engenharia de Controle e Automação na UFMG.
-        </p>
-
-        <nav class="social-links">
-            <a href="https://www.behance.net/raphaelcborges" target="_blank">Behance</a>
-            <a href="https://www.linkedin.com/in/raphael-campos-borges-3709a7231/" target="_blank">LinkedIn</a>
-            <a href="mailto:seuemail@email.com">Email</a>
-        </nav>
-
-        <section class="tech-stack">
-            <h3 class="stack-title">Arsenal Criativo & Técnico</h3>
-            <div class="icons-grid">
-                <div class="tech-item"><span>Adobe Premiere</span></div>
-                <div class="tech-item"><span>After Effects</span></div>
-                <div class="tech-item"><span>Photoshop</span></div>
-                <div class="tech-item"><span>Manim (Python)</span></div>
-                <div class="tech-item"><span>CapCut</span></div>
-                <div class="tech-item"><span>DaVinci Resolve</span></div>
+    <header>
+        <div class="container">
+            <img src="assets/perfil.jpg" alt="Foto de Perfil" class="avatar">
+            <h1>Raphael C. Borges</h1>
+            <p>Editor de Vídeo | Portfolio de Projetos</p>
+            <div class="social-links">
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="mailto:seuemail@email.com">E-mail</a>
             </div>
-        </section>
+        </div>
     </header>
 
     <main class="container">
-        
-        <div class="section-header">
-            <h2 class="section-title">Projetos Principais</h2>
-        </div>
+        <h2>Destaques de Edição</h2>
         
         <div class="video-grid">
             
-            <div class="project-card wide" data-video-id="qafkHYKR2AQ">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/qafkHYKR2AQ/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ" title="Explicação de Golpes Pokémon" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>Os Golpes MAIS FORTES!</h3>
-                    <p>Assets Visuais • Roteiro Explicativo</p>
-                </div>
+                <h3>Explicação de Golpes Pokémon</h3>
+                <p>Edição documental com foco em infográficos e ritmo acelerado.</p>
             </div>
 
-            <div class="project-card wide" data-video-id="lhyyyJnHDG8">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/lhyyyJnHDG8/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo" title="O RESGATE DO SOLDADO ABSOLUT!" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>paiN dyNKas duo Cariok</h3>
-                    <p>Gameplay • Highlights</p>
-                </div>
+                <h3>O Resgate do Soldado Absolut</h3>
+                <p>Narrativa de entretenimento e edição de gameplay story-driven.</p>
             </div>
 
-            <div class="project-card wide" data-video-id="dPXEbURCnCE">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/dPXEbURCnCE/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="paiN dyNKas duo Cariok" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>Vlog com trilha sonora</h3>
-                    <p>Edição Dinâmica • Storytelling</p>
-                </div>
+                <h3>Highlights Gameplay - paiN dyNKas</h3>
+                <p>Cortes dinâmicos e sincronização de áudio para melhores momentos.</p>
             </div>
 
-            <div class="project-card wide" data-video-id="n9LmxGAgWN4">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/n9LmxGAgWN4/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dPXEbURCnCE" title="VLOG 01 - KYOULLA" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>Desafio Pokémon Kanto</h3>
-                    <p>Edição Dinâmica • Storytelling</p>
-                </div>
+                <h3>VLOG 01 - Kyoulla</h3>
+                <p>Storytelling focado em Vlogs e estética visual moderna.</p>
             </div>
 
-            <div class="project-card wide" data-video-id="DGBm17POVG0">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/DGBm17POVG0/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>Desafio Pokémon Johto</h3>
-                    <p>Cortes Rápidos • Ritmo Acelerado</p>
-                </div>
+                <h3>Desafio Pokémon: Kanto</h3>
+                <p>Uso de overlays, assets externos e edição de retenção.</p>
             </div>
 
-            <div class="project-card wide" data-video-id="VepjSKO6kH4">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/VepjSKO6kH4/maxresdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>Vlog - Invento na Hora</h3>
-                    <p>Vlog Style • B-Rolls</p>
-                </div>
+                <h3>Desafio Pokémon: Johto</h3>
+                <p>Continuidade de série com foco em elementos visuais e humor.</p>
             </div>
-            
-        </div>
 
-        <div class="section-header" style="margin-top: 80px;">
-            <h2 class="section-title">Shorts & Reels</h2>
-        </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/VepjSKO6kH4" title="VLOG - Teste de Editor" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>VLOG - Teste de Edição</h3>
+                <p>Demonstração de cortes secos e dinâmica de conteúdo para grandes canais.</p>
+            </div>
 
-        <div class="shorts-grid">
-            
-            <div class="project-card" data-video-id="DAXXWw_os9w" data-is-vertical="true">
-                <div class="thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/DAXXWw_os9w/hqdefault.jpg" class="project-thumb">
-                    <div class="play-overlay"></div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w" title="VÍDEO PROMOCIONAL VOYMATCH" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="card-info">
-                    <h3>Voymatch App</h3>
-                    <p>Motion Graphics • Mobile</p>
-                </div>
+                <h3>Comercial App - VoyMatch</h3>
+                <p>Edição publicitária, Motion Graphics e foco em conversão/UI.</p>
             </div>
 
         </div>
 
+        <hr>
+
+        <h2>Contato</h2>
+        <p>Interessado em trabalhar junto? Me mande uma mensagem!</p>
+        <div class="social-links">
+            <a href="mailto:seuemail@email.com">📩 E-mail Profissional</a>
+            <a href="#">💬 WhatsApp</a>
+        </div>
     </main>
 
-    <footer class="site-footer">
-        <p>© 2026 Raphael Borges. Engenharia & Criatividade.</p>
-        <div class="footer-links">
-            <a href="#">Voltar ao Topo</a>
-        </div>
+    <footer>
+        <p>© 2026 Raphael C. Borges. Todos os vídeos editados por mim. Hospedado via GitHub Pages.</p>
     </footer>
-
-    <div class="video-modal" id="videoModal">
-        <span class="close-modal" onclick="fecharModal()">&times;</span>
-        <div class="modal-content" id="modalContent">
-            <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById('videoModal');
-        const modalContent = document.getElementById('modalContent');
-        const videoFrame = document.getElementById('videoFrame');
-        const cards = document.querySelectorAll('.project-card');
-
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const videoId = card.getAttribute('data-video-id');
-                const isVertical = card.getAttribute('data-is-vertical') === 'true';
-
-                if (isVertical) {
-                    modalContent.classList.add('vertical-mode');
-                } else {
-                    modalContent.classList.remove('vertical-mode');
-                }
-                
-                videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-                modal.classList.add('active');
-            });
-        });
-
-        function fecharModal() {
-            modal.classList.remove('active');
-            setTimeout(() => { videoFrame.src = ''; }, 300);
-        }
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) fecharModal();
-        });
-    </script>
 
 </body>
 </html>
-
