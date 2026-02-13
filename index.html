@@ -7,134 +7,142 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6c5ce7;
-            --secondary: #00cec9;
-            --bg: #f4f7f6;
-            --text: #2d3436;
-            --white: #ffffff;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --bg-dark: #0b0e14;
+            --card-dark: #161b22;
+            --text-main: #f0f6fc;
+            --text-gray: #8b949e;
+            /* Cores Tecnológicas */
+            --tech-purple: #6c5ce7;
+            --tech-blue: #0984e3;
+            --tech-green: #00b894;
+            --gradient: linear-gradient(135deg, var(--tech-purple), var(--tech-blue), var(--tech-green));
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header Profissional */
+        /* Header com Tema Escuro e Detalhes Tech */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 70px 0;
+            padding: 80px 0;
             text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+            background: radial-gradient(circle at top, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
         }
 
         .avatar {
             width: 130px;
             height: 130px;
             border-radius: 50%;
-            border: 4px solid white;
+            border: 3px solid var(--tech-purple);
+            padding: 5px;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        header h1 { margin: 10px 0; font-size: 2.5rem; font-weight: 800; }
-        header p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px; }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.8rem; 
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        .social-links a {
-            display: inline-block;
+        header p { color: var(--text-gray); font-size: 1.1rem; margin: 10px 0 30px; }
+
+        .btn-link {
             text-decoration: none;
-            color: var(--primary);
-            background: white;
-            padding: 10px 22px;
-            border-radius: 30px;
+            color: white;
+            padding: 10px 25px;
+            border: 1px solid var(--tech-purple);
+            border-radius: 5px;
             font-weight: 600;
-            margin: 5px;
+            margin: 0 10px;
             transition: 0.3s;
+            background: rgba(108, 92, 231, 0.1);
         }
 
-        .social-links a:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-link:hover { background: var(--tech-purple); box-shadow: 0 0 20px rgba(108, 92, 231, 0.4); }
 
-        /* Estilo das Seções */
-        section { padding: 50px 0; }
+        /* Estilização das Seções */
+        section { padding: 60px 0; }
         h2 { 
             font-size: 1.8rem; 
-            margin-bottom: 35px; 
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
+            margin-bottom: 40px; 
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
         h2::after {
             content: '';
-            display: block;
-            width: 50%;
-            height: 4px;
-            background: var(--secondary);
-            margin-top: 8px;
-            border-radius: 2px;
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--tech-purple), transparent);
         }
 
         /* Grid YouTube (16:9) */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
         .card {
-            background: var(--white);
+            background: var(--card-dark);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: 0.3s ease;
+            border: 1px solid #30363d;
+            transition: 0.3s;
         }
 
-        .card:hover { transform: translateY(-8px); }
+        .card:hover { border-color: var(--tech-blue); transform: translateY(-5px); }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .card-body { padding: 18px; }
-        .card-body h3 { margin: 0 0 8px; font-size: 1.1rem; color: var(--text); }
-        .card-body p { margin: 0; color: #636e72; font-size: 0.9rem; }
+        .card-body { padding: 20px; }
+        .card-body h3 { margin: 0 0 8px; font-size: 1rem; color: var(--text-main); }
+        .card-body p { margin: 0; color: var(--text-gray); font-size: 0.85rem; }
 
-        /* Seção Short Único (9:16) Centralizado */
-        .single-short-container {
+        /* Destaque do Short Único (9:16) */
+        .short-section {
             display: flex;
-            justify-content: center;
-            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
         }
 
         .short-card {
             width: 100%;
-            max-width: 300px; /* Largura ideal para um Short centralizado */
-            background: var(--white);
-            border-radius: 20px;
+            max-width: 320px;
+            background: var(--card-dark);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--secondary);
-            transition: 0.3s;
+            border: 2px solid var(--tech-green);
+            box-shadow: 0 0 30px rgba(0, 184, 148, 0.1);
         }
-
-        .short-card:hover { transform: scale(1.03); }
 
         .short-video-wrapper { position: relative; padding-bottom: 177.77%; height: 0; }
         .short-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        footer { text-align: center; padding: 50px; color: #b2bec3; font-size: 0.9rem; background: #fff; margin-top: 40px; }
+        footer { 
+            text-align: center; 
+            padding: 60px; 
+            color: var(--text-gray); 
+            font-size: 0.85rem;
+            border-top: 1px solid #30363d;
+        }
     </style>
 </head>
 <body>
@@ -143,11 +151,11 @@
         <div class="container">
             <img src="assets/perfil.jpg" alt="Raphael Borges" class="avatar">
             <h1>Raphael Borges</h1>
-            <p>Editor de Vídeo & Estudante de Engenharia de Controle e Automação (UFMG)</p>
+            <p>Editor de Vídeo & Engenheiro de Controle e Automação (UFMG)</p>
             <div class="social-links">
-                <a href="https://www.behance.net" target="_blank">Behance</a>
-                <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-                <a href="mailto:seuemail@email.com">E-mail</a>
+                <a href="#" class="btn-link">Behance</a>
+                <a href="#" class="btn-link">LinkedIn</a>
+                <a href="mailto:seuemail@email.com" class="btn-link">E-mail</a>
             </div>
         </div>
     </header>
@@ -155,7 +163,7 @@
     <main class="container">
         
         <section>
-            <h2>Projetos de Vídeo</h2>
+            <h2>Projetos de Edição</h2>
             <div class="video-grid">
                 
                 <div class="card">
@@ -164,7 +172,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Explicação de Golpes Pokémon</h3>
-                        <p>Edição documental com foco em infográficos.</p>
+                        <p>Motion Graphics e narrativa documental.</p>
                     </div>
                 </div>
 
@@ -174,7 +182,7 @@
                     </div>
                     <div class="card-body">
                         <h3>O Resgate do Soldado Absolut</h3>
-                        <p>Narrativa de entretenimento e gameplay.</p>
+                        <p>Edição de entretenimento e gameplay.</p>
                     </div>
                 </div>
 
@@ -184,7 +192,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Highlights paiN dyNKas</h3>
-                        <p>Edição dinâmica de esportes eletrônicos.</p>
+                        <p>Edição dinâmica de eSports.</p>
                     </div>
                 </div>
 
@@ -194,7 +202,7 @@
                     </div>
                     <div class="card-body">
                         <h3>VLOG 01 - Kyoulla</h3>
-                        <p>Storytelling e edição de ritmo.</p>
+                        <p>Ritmo visual e Storytelling.</p>
                     </div>
                 </div>
 
@@ -204,7 +212,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Desafio Pokémon Kanto</h3>
-                        <p>Inserção de assets e retenção visual.</p>
+                        <p>Edição focada em retenção.</p>
                     </div>
                 </div>
 
@@ -214,24 +222,32 @@
                     </div>
                     <div class="card-body">
                         <h3>Desafio Pokémon Johto</h3>
-                        <p>Edição focada em continuidade.</p>
+                        <p>Identidade visual e continuidade.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/VepjSKO6kH4"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h3>VLOG - Teste Invento na Hora</h3>
+                        <p>Edição estilo YouTuber/Daily Vlog.</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <section>
-            <h2 style="display: block; text-align: center;">Projeto em Destaque (Vertical)</h2>
-            <div class="single-short-container">
-                <div class="short-card">
-                    <div class="short-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/DAXXWw_os9w"></iframe>
-                    </div>
-                    <div class="card-body" style="text-align: center;">
-                        <h3>VoyMatch - Tinder de Viagem</h3>
-                        <p>Vídeo promocional focado em Motion Graphics e App Showcase.</p>
-                    </div>
+        <section class="short-section">
+            <h2>Cortes & Conteúdo Vertical</h2>
+            <div class="short-card">
+                <div class="short-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w"></iframe>
+                </div>
+                <div class="card-body" style="text-align: center;">
+                    <h3 style="color: var(--tech-green);">VoyMatch - Promo</h3>
+                    <p>Motion App Design para aplicativo mobile.</p>
                 </div>
             </div>
         </section>
@@ -239,7 +255,7 @@
     </main>
 
     <footer>
-        <p>Raphael Borges | Engenharia de Controle e Automação - UFMG</p>
+        <p>Raphael Borges © 2026 | Desenvolvido com foco em Tecnologia e Performance</p>
     </footer>
 
 </body>
