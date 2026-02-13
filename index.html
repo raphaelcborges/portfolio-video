@@ -30,7 +30,7 @@
             padding: 0 20px;
         }
 
-        /* Header Profissional e Limpo */
+        /* Header Profissional */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -111,25 +111,28 @@
         .card-body h3 { margin: 0 0 8px; font-size: 1.1rem; color: var(--text); }
         .card-body p { margin: 0; color: #636e72; font-size: 0.9rem; }
 
-        /* Grid Shorts (9:16) */
-        .shorts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+        /* Seção Short Único (9:16) Centralizado */
+        .single-short-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         .short-card {
+            width: 100%;
+            max-width: 300px; /* Largura ideal para um Short centralizado */
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 2px solid var(--secondary);
             transition: 0.3s;
         }
 
         .short-card:hover { transform: scale(1.03); }
 
-        .short-container { position: relative; padding-bottom: 177.77%; height: 0; }
-        .short-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .short-video-wrapper { position: relative; padding-bottom: 177.77%; height: 0; }
+        .short-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         footer { text-align: center; padding: 50px; color: #b2bec3; font-size: 0.9rem; background: #fff; margin-top: 40px; }
     </style>
@@ -140,7 +143,7 @@
         <div class="container">
             <img src="assets/perfil.jpg" alt="Raphael Borges" class="avatar">
             <h1>Raphael Borges</h1>
-            <p>Editor de Vídeo & Estudante de Engenharia (UFMG)</p>
+            <p>Editor de Vídeo & Estudante de Engenharia de Controle e Automação (UFMG)</p>
             <div class="social-links">
                 <a href="https://www.behance.net" target="_blank">Behance</a>
                 <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
@@ -161,7 +164,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Explicação de Golpes Pokémon</h3>
-                        <p>Edição documental e Motion Graphics.</p>
+                        <p>Edição documental com foco em infográficos.</p>
                     </div>
                 </div>
 
@@ -171,7 +174,7 @@
                     </div>
                     <div class="card-body">
                         <h3>O Resgate do Soldado Absolut</h3>
-                        <p>Narrativa de gameplay e entretenimento.</p>
+                        <p>Narrativa de entretenimento e gameplay.</p>
                     </div>
                 </div>
 
@@ -219,31 +222,17 @@
         </section>
 
         <section>
-            <h2>Cortes & Conteúdo Vertical</h2>
-            <div class="shorts-grid">
-                
-                <div class="short-card" style="border: 2px solid var(--secondary);">
-                    <div class="short-container">
+            <h2 style="display: block; text-align: center;">Projeto em Destaque (Vertical)</h2>
+            <div class="single-short-container">
+                <div class="short-card">
+                    <div class="short-video-wrapper">
                         <iframe src="https://www.youtube.com/embed/DAXXWw_os9w"></iframe>
                     </div>
-                    <div class="card-body">
-                        <h3 style="font-size: 0.9rem;">Promo VoyMatch</h3>
-                        <p style="font-size: 0.8rem;">Motion App Design</p>
+                    <div class="card-body" style="text-align: center;">
+                        <h3>VoyMatch - Tinder de Viagem</h3>
+                        <p>Vídeo promocional focado em Motion Graphics e App Showcase.</p>
                     </div>
                 </div>
-
-                <div class="short-card">
-                    <div class="short-container">
-                        <iframe src="https://www.youtube.com/embed/ID_DE_OUTRO_SHORT"></iframe>
-                    </div>
-                </div>
-
-                <div class="short-card">
-                    <div class="short-container">
-                        <iframe src="https://www.youtube.com/embed/ID_DE_OUTRO_SHORT"></iframe>
-                    </div>
-                </div>
-
             </div>
         </section>
 
