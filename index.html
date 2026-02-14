@@ -71,6 +71,7 @@
             margin: 0 10px;
             transition: 0.3s;
             background: rgba(108, 92, 231, 0.1);
+            display: inline-block; /* Garante alinhamento correto */
         }
 
         .btn-link:hover { background: var(--tech-purple); box-shadow: 0 0 20px rgba(108, 92, 231, 0.4); }
@@ -87,7 +88,6 @@
             color: var(--text-main);
         }
         
-        /* Linha divisória colorida ao lado do título */
         h2::after {
             content: '';
             flex: 1;
@@ -97,7 +97,7 @@
             opacity: 0.7;
         }
 
-        /* Cores específicas para cada categoria nos títulos */
+        /* Ícones via CSS */
         .title-anime::before { content: '⚡'; margin-right: 5px; }
         .title-game::before { content: '🎮'; margin-right: 5px; }
         .title-vlog::before { content: '📹'; margin-right: 5px; }
@@ -163,10 +163,11 @@
         <div class="container">
             <img src="assets/perfil.jpg" alt="Raphael Borges" class="avatar">
             <h1>Raphael Borges</h1>
-            <p>Editor de Vídeo & Engenheiro de Controle e Automação (UFMG)</p>
+            <p>Editor de Vídeo & Estudante de Engenharia de Controle e Automação (UFMG)</p>
+            
             <div class="social-links">
-                <a href="#" class="btn-link">Behance</a>
-                <a href="#" class="btn-link">LinkedIn</a>
+                <a href="https://www.behance.net/raphaelcborges" target="_blank" class="btn-link">Behance</a>
+                <a href="https://www.linkedin.com/in/raphael-campos-borges-3709a7231/" target="_blank" class="btn-link">LinkedIn</a>
                 <a href="mailto:raphaelcamposborges@gmail.com" class="btn-link">E-mail</a>
             </div>
         </div>
@@ -180,7 +181,7 @@
                 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ"></iframe>
+                        <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ" title="Explicação de Golpes Pokémon"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Explicação de Golpes Pokémon</h3>
@@ -190,7 +191,7 @@
 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4"></iframe>
+                        <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Desafio Pokémon Kanto</h3>
@@ -200,7 +201,7 @@
 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/DGBm17POVG0"></iframe>
+                        <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Desafio Pokémon Johto</h3>
@@ -217,7 +218,7 @@
                 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo"></iframe>
+                        <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo" title="O Resgate do Soldado Absolut"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>O Resgate do Soldado Absolut</h3>
@@ -227,7 +228,7 @@
 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8"></iframe>
+                        <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="Highlights paiN dyNKas"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Highlights paiN dyNKas</h3>
@@ -244,7 +245,7 @@
                 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/dPXEbURCnCE"></iframe>
+                        <iframe src="https://www.youtube.com/embed/dPXEbURCnCE" title="VLOG 01 - Kyoulla"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>VLOG 01 - Kyoulla</h3>
@@ -254,7 +255,7 @@
 
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/VepjSKO6kH4"></iframe>
+                        <iframe src="https://www.youtube.com/embed/VepjSKO6kH4" title="VLOG - Teste Invento na Hora"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>VLOG - Teste Invento na Hora</h3>
@@ -269,7 +270,7 @@
             <h2 class="title-app">Motion Graphics & Promo App</h2>
             <div class="short-card">
                 <div class="short-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w"></iframe>
+                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w" title="VoyMatch Promo"></iframe>
                 </div>
                 <div class="card-body" style="text-align: center;">
                     <h3 style="color: var(--tech-green);">VoyMatch - Promo</h3>
