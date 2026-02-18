@@ -11,7 +11,6 @@
             --card-dark: #161b22;
             --text-main: #f0f6fc;
             --text-gray: #8b949e;
-            /* Cores Tecnológicas */
             --tech-purple: #6c5ce7;
             --tech-blue: #0984e3;
             --tech-green: #00b894;
@@ -33,7 +32,6 @@
             padding: 0 20px;
         }
 
-        /* Header com Tema Escuro e Detalhes Tech */
         header {
             padding: 80px 0;
             text-align: center;
@@ -68,15 +66,14 @@
             border: 1px solid var(--tech-purple);
             border-radius: 5px;
             font-weight: 600;
-            margin: 0 10px;
+            margin: 5px;
             transition: 0.3s;
             background: rgba(108, 92, 231, 0.1);
-            display: inline-block; /* Garante alinhamento correto */
+            display: inline-block;
         }
 
         .btn-link:hover { background: var(--tech-purple); box-shadow: 0 0 20px rgba(108, 92, 231, 0.4); }
 
-        /* Estilização das Seções */
         section { padding: 40px 0; }
         
         h2 { 
@@ -97,13 +94,11 @@
             opacity: 0.7;
         }
 
-        /* Ícones via CSS */
         .title-anime::before { content: '⚡'; margin-right: 5px; }
         .title-game::before { content: '🎮'; margin-right: 5px; }
         .title-vlog::before { content: '📹'; margin-right: 5px; }
         .title-app::before { content: '📱'; margin-right: 5px; }
 
-        /* Grid YouTube (16:9) */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -116,6 +111,8 @@
             overflow: hidden;
             border: 1px solid #30363d;
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover { border-color: var(--tech-blue); transform: translateY(-5px); }
@@ -123,11 +120,10 @@
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .card-body { padding: 20px; }
+        .card-body { padding: 20px; flex-grow: 1; }
         .card-body h3 { margin: 0 0 8px; font-size: 1rem; color: var(--text-main); }
         .card-body p { margin: 0; color: var(--text-gray); font-size: 0.85rem; }
 
-        /* Destaque do Short Único (9:16) */
         .short-section {
             display: flex;
             flex-direction: column;
@@ -143,147 +139,3 @@
             border: 2px solid var(--tech-green);
             box-shadow: 0 0 30px rgba(0, 184, 148, 0.1);
         }
-
-        .short-video-wrapper { position: relative; padding-bottom: 177.77%; height: 0; }
-        .short-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        footer { 
-            text-align: center; 
-            padding: 60px; 
-            color: var(--text-gray); 
-            font-size: 0.85rem;
-            border-top: 1px solid #30363d;
-            margin-top: 40px;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="container">
-            <img src="assets/perfil.jpg" alt="Raphael Borges" class="avatar">
-            <h1>Raphael Borges</h1>
-            <p>Editor de Vídeo & Estudante de Engenharia de Controle e Automação (UFMG)</p>
-            
-            <div class="social-links">
-                <a href="https://www.behance.net/raphaelcborges" target="_blank" class="btn-link">Behance</a>
-                <a href="https://www.linkedin.com/in/raphael-campos-borges-3709a7231/" target="_blank" class="btn-link">LinkedIn</a>
-                <a href="mailto:raphaelcamposborges@gmail.com" class="btn-link">E-mail</a>
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        
-        <section>
-            <h2 class="title-anime">Anime & Cultura Geek</h2>
-            <div class="video-grid">
-                
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ" title="Explicação de Golpes Pokémon"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>Explicação de Golpes Pokémon</h3>
-                        <p>Motion Graphics e narrativa documental.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>Desafio Pokémon Kanto</h3>
-                        <p>Edição focada em retenção e humor.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>Desafio Pokémon Johto</h3>
-                        <p>Identidade visual e continuidade.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2 class="title-game">Gameplay & League of Legends</h2>
-            <div class="video-grid">
-                
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo" title="O Resgate do Soldado Absolut"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>O Resgate do Soldado Absolut</h3>
-                        <p>Edição de entretenimento e narrativa de jogo.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="Highlights paiN dyNKas"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>Highlights paiN dyNKas</h3>
-                        <p>Cortes dinâmicos e Highlights de eSports.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2 class="title-vlog">Vlogs & Storytelling</h2>
-            <div class="video-grid">
-                
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/dPXEbURCnCE" title="VLOG 01 - Kyoulla"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>VLOG 01 - Kyoulla</h3>
-                        <p>Ritmo visual, trilha sonora e Storytelling.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/VepjSKO6kH4" title="VLOG - Teste Invento na Hora"></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h3>VLOG - Teste Invento na Hora</h3>
-                        <p>Edição estilo Daily Vlog para YouTube.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="short-section">
-            <h2 class="title-app">Motion Graphics & Promo App</h2>
-            <div class="short-card">
-                <div class="short-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w" title="VoyMatch Promo"></iframe>
-                </div>
-                <div class="card-body" style="text-align: center;">
-                    <h3 style="color: var(--tech-green);">VoyMatch - Promo</h3>
-                    <p>Motion Design para aplicativo mobile (Formato Vertical).</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>Raphael Borges © 2026 | Desenvolvido com foco em Tecnologia e Performance</p>
-    </footer>
-
-</body>
-</html>
