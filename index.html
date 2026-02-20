@@ -125,7 +125,7 @@
         .card-body h3 { margin: 0 0 8px; font-size: 1rem; color: var(--text-main); }
         .card-body p { margin: 0; color: var(--text-gray); font-size: 0.85rem; }
 
-        /* Estilo para vídeos verticais (TikTok/Shorts) */
+        /* Estilo atualizado para vídeos verticais (TikTok/Shorts) */
         .short-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -142,28 +142,33 @@
         }
 
         .short-card:hover { border-color: var(--tiktok-pink); transform: translateY(-5px); }
-        .short-card:hover .thumb-img { transform: scale(1.1); }
+        
+        /* O efeito de zoom agora acontece na div de fundo */
+        .short-card:hover .thumb-bg { 
+            transform: scale(1.1); 
+            opacity: 0.8;
+        }
 
         .short-video-wrapper { 
             position: relative; 
             padding-bottom: 177.77%; 
             height: 0; 
-            background-color: #000;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-bottom: 1px solid #30363d;
         }
 
-        .thumb-img {
+        /* Classe nova que gerencia o fundo. Se a imagem não existir, fica cinza escuro */
+        .thumb-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: 0.5s ease;
-            opacity: 0.6; /* Deixa um pouco escuro para o badge brilhar */
+            background-color: #1a1e24; /* Fallback de cor */
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0.5;
         }
 
         .badge {
@@ -297,7 +302,7 @@
                     <div class="short-card">
                         <div class="badge">🔥 120K Views</div>
                         <div class="short-video-wrapper">
-                            <img src="assets/thumb120k.jpg" alt="Cena 120k" class="thumb-img">
+                            <div class="thumb-bg" style="background-image: url('assets/thumb120k.jpg');"></div>
                             <span class="play-overlay">▶️</span>
                         </div>
                         <div class="card-body">
@@ -311,7 +316,7 @@
                     <div class="short-card">
                         <div class="badge" style="background: var(--tech-blue);">📈 75K Views</div>
                         <div class="short-video-wrapper">
-                            <img src="assets/thumb75k.jpg" alt="Cena 75k" class="thumb-img">
+                            <div class="thumb-bg" style="background-image: url('assets/thumb75k.jpg');"></div>
                             <span class="play-overlay">▶️</span>
                         </div>
                         <div class="card-body">
@@ -325,7 +330,7 @@
                     <div class="short-card">
                         <div class="badge" style="background: var(--tech-purple);">✨ 27K Views</div>
                         <div class="short-video-wrapper">
-                            <img src="assets/thumb27k.jpg" alt="Cena 27k" class="thumb-img">
+                            <div class="thumb-bg" style="background-image: url('assets/thumb27k.jpg');"></div>
                             <span class="play-overlay">▶️</span>
                         </div>
                         <div class="card-body">
