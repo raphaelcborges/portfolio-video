@@ -14,6 +14,7 @@
             --tech-purple: #6c5ce7;
             --tech-blue: #0984e3;
             --tech-green: #00b894;
+            --tiktok-pink: #ff0050;
             --gradient: linear-gradient(135deg, var(--tech-purple), var(--tech-blue), var(--tech-green));
         }
 
@@ -98,6 +99,7 @@
         .title-game::before { content: '🎮'; margin-right: 5px; }
         .title-vlog::before { content: '📹'; margin-right: 5px; }
         .title-app::before { content: '📱'; margin-right: 5px; }
+        .title-tiktok::before { content: '📱'; margin-right: 5px; }
 
         .video-grid {
             display: grid;
@@ -124,21 +126,22 @@
         .card-body h3 { margin: 0 0 8px; font-size: 1rem; color: var(--text-main); }
         .card-body p { margin: 0; color: var(--text-gray); font-size: 0.85rem; }
 
-        .short-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* Estilo para vídeos verticais (TikTok/Shorts) */
+        .short-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
 
         .short-card {
-            width: 100%;
-            max-width: 320px;
             background: var(--card-dark);
             border-radius: 15px;
             overflow: hidden;
-            border: 2px solid var(--tech-green);
-            box-shadow: 0 0 30px rgba(0, 184, 148, 0.1);
+            border: 1px solid #30363d;
+            transition: 0.3s;
         }
+
+        .short-card:hover { border-color: var(--tiktok-pink); transform: translateY(-5px); }
 
         .short-video-wrapper { position: relative; padding-bottom: 177.77%; height: 0; }
         .short-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
@@ -159,11 +162,12 @@
         <div class="container">
             <img src="assets/perfil.jpg" alt="Raphael Borges" class="avatar">
             <h1>Raphael Borges</h1>
-            <p>Editor de Vídeo & Estudante de Engenharia de Controle e Automação (UFMG)</p>
+            <p>Video Editor & Control and Automation Engineering Student (UFMG)</p>
             
             <div class="social-links">
                 <a href="https://www.behance.net/raphaelcborges" target="_blank" class="btn-link">Behance</a>
                 <a href="https://www.linkedin.com/in/raphael-campos-borges-3709a7231/" target="_blank" class="btn-link">LinkedIn</a>
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte" target="_blank" class="btn-link" style="border-color: var(--tiktok-pink);">TikTok</a>
                 <a href="mailto:raphaelcamposborges@gmail.com" class="btn-link">E-mail</a>
             </div>
         </div>
@@ -183,7 +187,6 @@
                         <p>Motion Graphics e narrativa documental.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto" allowfullscreen></iframe>
@@ -193,7 +196,6 @@
                         <p>Edição focada em retenção e humor dinâmico.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto" allowfullscreen></iframe>
@@ -211,14 +213,13 @@
             <div class="video-grid">
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/mKanu6umKGA" title="Corte Casimiro - Amouranth" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/mKanu6umKGA" title="Corte Casimiro" allowfullscreen></iframe>
                     </div>
                     <div class="card-body">
-                        <h3>Casimiro & Amouranth</h3>
-                        <p>Edição de cortes (Highlights) com foco em Storytelling.</p>
+                        <h3>Cortes de Live - Casimiro</h3>
+                        <p>Edição de Highlights com foco em storytelling e timing.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo" title="O Resgate do Soldado Absolut" allowfullscreen></iframe>
@@ -228,21 +229,56 @@
                         <p>Narrativa de gameplay e edição de entretenimento.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="Highlights paiN dyNKas" allowfullscreen></iframe>
                     </div>
                     <div class="card-body">
-                        <h3>Highlights paiN dyNKas</h3>
-                        <p>Cortes dinâmicos de eSports e performance.</p>
+                        <h3>Highlights eSports - paiN dyNKas</h3>
+                        <p>Cortes dinâmicos e foco em performance.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2 class="title-vlog">Vlogs & Storytelling</h2>
+            <h2 class="title-tiktok" style="color: var(--text-main);">Short Form & Viralização (TikTok)</h2>
+            <div class="short-grid">
+                <div class="short-card">
+                    <div class="short-video-wrapper">
+                        <iframe src="https://www.tiktok.com/player/v1/7472099307221306630" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h3>Cortes de Entretenimento</h3>
+                        <p>Legendas dinâmicas e ganchos de retenção.</p>
+                    </div>
+                </div>
+                <div class="short-card">
+                    <div class="short-video-wrapper">
+                        <iframe src="https://www.tiktok.com/player/v1/7472093539956755717" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h3>@apenasumcanaldecorte</h3>
+                        <p>Gestão de conteúdo e edição viral vertical.</p>
+                    </div>
+                </div>
+                <div class="short-card" style="border-color: var(--tech-green);">
+                    <div class="short-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/DAXXWw_os9w" title="VoyMatch Promo" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h3 style="color: var(--tech-green);">VoyMatch Promo</h3>
+                        <p>Motion Design para App (Vertical/Ads).</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte" target="_blank" class="btn-link" style="border-color: var(--tiktok-pink); background: rgba(255, 0, 80, 0.05);">Acessar Canal de Cortes</a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="title-vlog">Vlogs & Estilo de Vida</h2>
             <div class="video-grid">
                 <div class="card">
                     <div class="video-container">
@@ -253,7 +289,6 @@
                         <p>Reedição focada em ritmo visual e trilha sonora.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/VepjSKO6kH4" title="VLOG - Teste Invento na Hora" allowfullscreen></iframe>
@@ -266,23 +301,10 @@
             </div>
         </section>
 
-        <section class="short-section">
-            <h2 class="title-app">Motion Graphics & Promo App</h2>
-            <div class="short-card">
-                <div class="short-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/DAXXWw_os9w" title="VoyMatch Promo" allowfullscreen></iframe>
-                </div>
-                <div class="card-body" style="text-align: center;">
-                    <h3 style="color: var(--tech-green);">VoyMatch - Promo</h3>
-                    <p>Motion Design para aplicativo mobile (Formato Vertical).</p>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <footer>
-        <p>Raphael Borges © 2026 | Desenvolvido com foco em Tecnologia e Performance</p>
+        <p>Raphael Borges © 2026 | Desenvolvido com foco em Engenharia, Tecnologia e Performance</p>
     </footer>
 
 </body>
