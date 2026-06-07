@@ -3,237 +3,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | Raphael Borges</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Raphael Borges — Editor de Vídeo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0b0e14;
-            --card-dark: #161b22;
-            --text-main: #f0f6fc;
-            --text-gray: #8b949e;
-            --tech-purple: #6c5ce7;
-            --tech-blue: #0984e3;
-            --tech-green: #00b894;
-            --tiktok-pink: #ff0050;
-            --gradient: linear-gradient(135deg, var(--tech-purple), var(--tech-blue), var(--tech-green));
+            --bg: #080a0f;
+            --surface: #0f1318;
+            --surface-2: #161c24;
+            --border: rgba(255,255,255,0.07);
+            --text: #eef2f7;
+            --muted: #5a6478;
+            --accent-1: #e8ff47;   /* Amarelo elétrico */
+            --accent-2: #ff4d6d;   /* Vermelho */
+            --accent-3: #4dffb8;   /* Verde neon */
+            --accent-insta: #f77737;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        .container {
+        /* ─── NOISE TEXTURE OVERLAY ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232,255,71,0.06) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .header-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,77,109,0.05) 0%, transparent 70%);
+            bottom: 50px;
+            left: -50px;
+            pointer-events: none;
+        }
+
+        .header-inner {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            width: 100%;
         }
 
-        header {
-            padding: 80px 0;
-            text-align: center;
-            background: radial-gradient(circle at top, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
-        }
-
-        .avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 3px solid var(--tech-purple);
-            padding: 5px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        header h1 { 
-            margin: 0; 
-            font-size: 2.8rem; 
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        header p { color: var(--text-gray); font-size: 1.1rem; margin: 10px 0 30px; }
-
-        .btn-link {
-            text-decoration: none;
-            color: white;
-            padding: 10px 25px;
-            border: 1px solid var(--tech-purple);
-            border-radius: 5px;
-            font-weight: 600;
-            margin: 5px;
-            transition: 0.3s;
-            background: rgba(108, 92, 231, 0.1);
-            display: inline-block;
-        }
-
-        .btn-link:hover { background: var(--tech-purple); box-shadow: 0 0 20px rgba(108, 92, 231, 0.4); }
-
-        section { padding: 40px 0; }
-        
-        h2 { 
-            font-size: 1.8rem; 
-            margin-bottom: 30px; 
+        .eyebrow {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            margin-bottom: 28px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            color: var(--text-main);
+            gap: 12px;
         }
-        
-        h2::after {
+
+        .eyebrow::before {
             content: '';
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(to right, var(--tech-purple), transparent);
-            border-radius: 2px;
-            opacity: 0.7;
+            display: inline-block;
+            width: 32px;
+            height: 1px;
+            background: var(--accent-1);
         }
 
-        .title-anime::before { content: '⚡'; margin-right: 5px; }
-        .title-game::before { content: '🎮'; margin-right: 5px; }
-        .title-vlog::before { content: '📹'; margin-right: 5px; }
-        .title-tiktok::before { content: '📱'; margin-right: 5px; }
+        .avatar-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid rgba(232,255,71,0.4);
+            padding: 3px;
+            margin-bottom: 32px;
+            position: relative;
+        }
 
+        .avatar-wrap::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(232,255,71,0.12);
+        }
+
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 28px;
+        }
+
+        header h1 span {
+            display: block;
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 440px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        .social-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            background: var(--surface);
+            transition: all 0.25s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .pill:hover {
+            background: var(--surface-2);
+            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .pill.accent { border-color: var(--accent-1); color: var(--accent-1); }
+        .pill.accent:hover { background: rgba(232,255,71,0.08); }
+        .pill.red { border-color: var(--accent-2); color: var(--accent-2); }
+        .pill.red:hover { background: rgba(255,77,109,0.08); }
+        .pill.insta { border-color: var(--accent-insta); color: var(--accent-insta); }
+        .pill.insta:hover { background: rgba(247,119,55,0.08); }
+
+        /* ─── SCROLL INDICATOR ─── */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 40px;
+            height: 1px;
+            background: var(--muted);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--accent-1);
+            animation: slide 2s infinite ease-in-out;
+        }
+
+        @keyframes slide { 0%{left:-100%} 100%{left:100%} }
+
+        /* ─── MAIN ─── */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 120px;
+        }
+
+        /* ─── SECTION ─── */
+        section { padding: 80px 0; border-top: 1px solid var(--border); }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .section-tag {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        /* ─── VIDEO GRID ─── */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .card {
-            background: var(--card-dark);
-            border-radius: 12px;
+            background: var(--surface);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #30363d;
-            transition: 0.3s;
+            border: 1px solid var(--border);
+            transition: border-color 0.25s, transform 0.25s;
             display: flex;
             flex-direction: column;
         }
 
-        .card:hover { border-color: var(--tech-blue); transform: translateY(-5px); }
+        .card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 0; }
 
-        .card-body { padding: 20px; flex-grow: 1; }
-        .card-body h3 { margin: 0 0 8px; font-size: 1rem; color: var(--text-main); }
-        .card-body p { margin: 0; color: var(--text-gray); font-size: 0.85rem; }
+        .card-body { padding: 18px 20px 22px; flex-grow: 1; }
 
-        /* Estilo atualizado para vídeos verticais (TikTok/Shorts) */
+        .card-body h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .card-body p { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+        /* ─── SHORT GRID (TikTok) ─── */
         .short-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
         }
 
         .short-card {
-            background: var(--card-dark);
-            border-radius: 15px;
+            background: var(--surface);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #30363d;
-            transition: 0.3s;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, transform 0.3s;
             position: relative;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
         }
 
-        .short-card:hover { border-color: var(--tiktok-pink); transform: translateY(-5px); }
-        
-        /* O efeito de zoom agora acontece na div de fundo */
-        .short-card:hover .thumb-bg { 
-            transform: scale(1.1); 
-            opacity: 0.8;
-        }
+        .short-card:hover { transform: translateY(-5px); border-color: rgba(255,77,109,0.4); }
+        .short-card:hover .thumb-bg { transform: scale(1.06); opacity: 0.7; }
 
-        .short-video-wrapper { 
-            position: relative; 
-            padding-bottom: 177.77%; 
-            height: 0; 
+        .short-video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%;
+            height: 0;
             overflow: hidden;
-            border-bottom: 1px solid #30363d;
         }
 
-        /* Classe nova que gerencia o fundo. Se a imagem não existir, fica cinza escuro */
         .thumb-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #1a1e24; /* Fallback de cor */
+            inset: 0;
+            background-color: var(--surface-2);
             background-size: cover;
             background-position: center;
             transition: transform 0.5s ease, opacity 0.5s ease;
-            opacity: 0.5;
+            opacity: 0.55;
         }
 
         .badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--tiktok-pink);
+            top: 14px;
+            left: 14px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
             color: white;
             padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 800;
-            font-size: 0.75rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.7rem;
             z-index: 2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .play-overlay {
+        .badge.red { border-color: rgba(255,77,109,0.4); color: var(--accent-2); }
+        .badge.blue { border-color: rgba(77,170,255,0.4); color: #4daaff; }
+        .badge.purple { border-color: rgba(180,77,255,0.4); color: #b44dff; }
+
+        .play-btn {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3.5rem;
-            color: white;
-            opacity: 0.8;
-            z-index: 1;
-            pointer-events: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: background 0.2s;
         }
 
-        footer { 
-            text-align: center; 
-            padding: 60px; 
-            color: var(--text-gray); 
-            font-size: 0.85rem;
-            border-top: 1px solid #30363d;
-            margin-top: 40px;
+        .short-card:hover .play-btn { background: rgba(255,255,255,0.25); }
+
+        .play-btn svg { width: 18px; height: 18px; fill: white; margin-left: 3px; }
+
+        .short-card .card-body { padding: 16px 18px 20px; }
+        .short-card .card-body h3 { font-size: 0.88rem; }
+
+        /* ─── INSTAGRAM GRID ─── */
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
         }
 
-        a { text-decoration: none; }
+        .insta-card {
+            background: var(--surface);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insta-card:hover { transform: translateY(-4px); border-color: rgba(247,119,55,0.4); }
+        .insta-card:hover .insta-thumb { transform: scale(1.05); }
+
+        .insta-thumb-wrap {
+            position: relative;
+            padding-bottom: 177.77%;
+            height: 0;
+            overflow: hidden;
+            background: var(--surface-2);
+        }
+
+        .insta-thumb {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .insta-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.72rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .insta-placeholder svg { width: 32px; height: 32px; opacity: 0.3; }
+
+        .insta-icon {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 2;
+        }
+
+        .insta-icon svg { width: 20px; height: 20px; }
+
+        .insta-card .card-body { padding: 14px 16px 18px; }
+        .insta-card .card-body h3 { font-size: 0.85rem; }
+
+        .insta-notice {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: rgba(247,119,55,0.05);
+            border: 1px solid rgba(247,119,55,0.15);
+            border-radius: 10px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .insta-notice strong { color: var(--accent-insta); }
+
+        /* ─── CTA LINK ─── */
+        .cta-row {
+            text-align: center;
+            margin-top: 36px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer p { color: var(--muted); font-size: 0.78rem; }
+
+        .footer-mark {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--accent-1);
+            letter-spacing: -0.02em;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 600px) {
+            header { padding: 60px 24px; }
+            main { padding: 0 24px 80px; }
+            header h1 { font-size: 3rem; }
+            .video-grid, .short-grid, .insta-grid { grid-template-columns: 1fr; }
+            footer { padding: 40px 24px; flex-direction: column; gap: 12px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <img src="assets/perfil.jpg" alt="Raphael Borges" class="avatar">
-            <h1>Raphael Borges</h1>
-            <p>Video Editor & Control and Automation Engineering Student (UFMG)</p>
-            
-            <div class="social-links">
-                <a href="https://www.behance.net/raphaelcborges" target="_blank" class="btn-link">Behance</a>
-                <a href="https://www.linkedin.com/in/raphael-campos-borges-3709a7231/" target="_blank" class="btn-link">LinkedIn</a>
-                <a href="https://www.tiktok.com/@apenasumcanaldecorte" target="_blank" class="btn-link" style="border-color: var(--tiktok-pink);">TikTok</a>
-                <a href="mailto:raphaelcamposborges@gmail.com" class="btn-link">E-mail</a>
+        <div class="header-glow"></div>
+        <div class="header-glow-2"></div>
+
+        <div class="header-inner">
+            <div class="eyebrow">Editor de Vídeo &amp; Engenharia de Controle — UFMG</div>
+
+            <div class="avatar-wrap">
+                <img src="assets/perfil.jpg" alt="Raphael Borges">
             </div>
+
+            <h1>
+                Raphael
+                <span>Borges.</span>
+            </h1>
+
+            <p class="tagline">
+                Edição orientada a retenção, storytelling e performance. Do anime ao gameplay, do short-form ao viral.
+            </p>
+
+            <div class="social-row">
+                <a href="https://www.behance.net/raphaelcborges" target="_blank" class="pill">Behance</a>
+                <a href="https://www.linkedin.com/in/raphael-campos-borges-3709a7231/" target="_blank" class="pill">LinkedIn</a>
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte" target="_blank" class="pill red">TikTok</a>
+                <a href="https://www.instagram.com/kakacrads/" target="_blank" class="pill insta">Instagram</a>
+                <a href="mailto:raphaelcamposborges@gmail.com" class="pill accent">E-mail</a>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            Rolar
         </div>
     </header>
 
-    <main class="container">
-        
-        <section>
-            <h2 class="title-anime">Anime & Cultura Geek</h2>
+    <main>
+
+        <!-- ── ANIME & GEEK ── -->
+        <section class="fade-up">
+            <div class="section-header">
+                <div class="section-label">
+                    ⚡ Anime &amp; Cultura Geek
+                    <span class="section-tag">Motion · Narrativa</span>
+                </div>
+            </div>
             <div class="video-grid">
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ" title="Explicação de Golpes Pokémon" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/qafkHYKR2AQ" title="Os Golpes MAIS FORTES em Pokémon" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Os Golpes MAIS FORTES em Pokémon!</h3>
@@ -242,7 +560,7 @@
                 </div>
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/n9LmxGAgWN4" title="Desafio Pokémon Kanto" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Desafio Pokémon Kanto</h3>
@@ -251,7 +569,7 @@
                 </div>
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/DGBm17POVG0" title="Desafio Pokémon Johto" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>Desafio Pokémon Johto</h3>
@@ -261,21 +579,27 @@
             </div>
         </section>
 
-        <section>
-            <h2 class="title-game">Gameplay & Entretenimento</h2>
+        <!-- ── GAMEPLAY ── -->
+        <section class="fade-up">
+            <div class="section-header">
+                <div class="section-label">
+                    🎮 Gameplay &amp; Entretenimento
+                    <span class="section-tag">Highlights · Storytelling</span>
+                </div>
+            </div>
             <div class="video-grid">
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/mKanu6umKGA" title="Corte Casimiro" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/mKanu6umKGA" title="Corte Casimiro" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="card-body">
-                        <h3>Cortes de Live - Casimiro</h3>
-                        <p>Edição de Highlights com foco em storytelling e timing.</p>
+                        <h3>Cortes de Live — Casimiro</h3>
+                        <p>Highlights com foco em storytelling e timing.</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo" title="O Resgate do Soldado Absolut" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/6eKq5veN0Qo" title="O Resgate do Soldado Absolut" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="card-body">
                         <h3>O Resgate do Soldado Absolut</h3>
@@ -284,97 +608,218 @@
                 </div>
                 <div class="card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="Highlights paiN dyNKas" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/lhyyyJnHDG8" title="Highlights paiN dyNKas" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <div class="card-body">
-                        <h3>Highlights eSports - paiN dyNKas</h3>
+                        <h3>Highlights eSports — paiN dyNKas</h3>
                         <p>Cortes dinâmicos e foco em performance.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="title-tiktok">Short Form & Viralização (TikTok)</h2>
+        <!-- ── TIKTOK SHORT FORM ── -->
+        <section class="fade-up">
+            <div class="section-header">
+                <div class="section-label">
+                    📱 Short Form &amp; Viralização
+                    <span class="section-tag">TikTok · Retenção</span>
+                </div>
+            </div>
             <div class="short-grid">
-                
-                <a href="https://www.tiktok.com/@apenasumcanaldecorte/video/7594831316236012820" target="_blank">
-                    <div class="short-card">
-                        <div class="badge">🔥 120K Views</div>
-                        <div class="short-video-wrapper">
-                            <div class="thumb-bg" style="background-image: url('assets/thumb120k.jpg');"></div>
-                            <span class="play-overlay">▶️</span>
+
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte/video/7594831316236012820" target="_blank" class="short-card">
+                    <div class="short-video-wrapper">
+                        <div class="thumb-bg" style="background-image: url('assets/thumb120k.jpg');"></div>
+                        <div class="badge red">🔥 120K Views</div>
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <div class="card-body">
-                            <h3>Corte Viral - Entretenimento</h3>
-                            <p>Edição estratégica com alta taxa de retenção.</p>
-                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Corte Viral — Entretenimento</h3>
+                        <p>Edição estratégica com alta taxa de retenção.</p>
                     </div>
                 </a>
 
-                <a href="https://www.tiktok.com/@apenasumcanaldecorte/video/7593722965456473364" target="_blank">
-                    <div class="short-card">
-                        <div class="badge" style="background: var(--tech-blue);">📈 75K Views</div>
-                        <div class="short-video-wrapper">
-                            <div class="thumb-bg" style="background-image: url('assets/thumb75k.jpg');"></div>
-                            <span class="play-overlay">▶️</span>
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte/video/7593722965456473364" target="_blank" class="short-card">
+                    <div class="short-video-wrapper">
+                        <div class="thumb-bg" style="background-image: url('assets/thumb75k.jpg');"></div>
+                        <div class="badge blue">📈 75K Views</div>
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <div class="card-body">
-                            <h3>Retenção & Legendas</h3>
-                            <p>Domínio de legendas dinâmicas para engajamento.</p>
-                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Retenção &amp; Legendas</h3>
+                        <p>Domínio de legendas dinâmicas para engajamento.</p>
                     </div>
                 </a>
 
-                <a href="https://www.tiktok.com/@apenasumcanaldecorte/video/7598960536625138960" target="_blank">
-                    <div class="short-card">
-                        <div class="badge" style="background: var(--tech-purple);">✨ 27K Views</div>
-                        <div class="short-video-wrapper">
-                            <div class="thumb-bg" style="background-image: url('assets/thumb27k.jpg');"></div>
-                            <span class="play-overlay">▶️</span>
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte/video/7598960536625138960" target="_blank" class="short-card">
+                    <div class="short-video-wrapper">
+                        <div class="thumb-bg" style="background-image: url('assets/thumb27k.jpg');"></div>
+                        <div class="badge purple">✨ 27K Views</div>
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <div class="card-body">
-                            <h3>Gestão de Canal</h3>
-                            <p>Crescimento orgânico e consistência de marca.</p>
-                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Gestão de Canal</h3>
+                        <p>Crescimento orgânico e consistência de marca.</p>
                     </div>
                 </a>
 
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="https://www.tiktok.com/@apenasumcanaldecorte" target="_blank" class="btn-link" style="border-color: var(--tiktok-pink); background: rgba(255, 0, 80, 0.05);">Ver Todos no TikTok</a>
+            <div class="cta-row">
+                <a href="https://www.tiktok.com/@apenasumcanaldecorte" target="_blank" class="pill red">Ver canal completo no TikTok →</a>
             </div>
         </section>
 
-        <section>
-            <h2 class="title-vlog">Vlogs & Estilo de Vida</h2>
-            <div class="video-grid">
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/dPXEbURCnCE" title="VLOG 01 - Kyoulla" allowfullscreen></iframe>
+        <!-- ── INSTAGRAM REELS ── -->
+        <section class="fade-up">
+            <div class="section-header">
+                <div class="section-label">
+                    📸 Reels Verticais — Instagram
+                    <span class="section-tag">@kakacrads · Vertical</span>
+                </div>
+            </div>
+
+            <div class="insta-notice">
+                <strong>Como adicionar as miniaturas:</strong> salve um screenshot de cada Reel como
+                <code>assets/insta-1.jpg</code>, <code>assets/insta-2.jpg</code>, etc. e substitua nas
+                divs abaixo. O Instagram não permite incorporar vídeos diretamente fora da plataforma.
+            </div>
+
+            <br>
+            <div class="insta-grid">
+
+                <!-- Card 1 — substitua o href e background-image -->
+                <a href="https://www.instagram.com/kakacrads/" target="_blank" class="insta-card">
+                    <div class="insta-thumb-wrap">
+                        <!-- Quando tiver a imagem: style="background-image: url('assets/insta-1.jpg')" -->
+                        <div class="insta-thumb"></div>
+                        <div class="insta-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                            Adicione<br>assets/insta-1.jpg
+                        </div>
+                        <div class="insta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,119,55,0.7)" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="rgba(247,119,55,0.7)" stroke="none"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <h3>VLOG 01 - Kyoulla</h3>
-                        <p>Reedição focada em ritmo visual e trilha sonora.</p>
+                        <h3>Reel — @kakacrads</h3>
+                        <p>Edição vertical para Instagram.</p>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/VepjSKO6kH4" title="VLOG - Teste Invento na Hora" allowfullscreen></iframe>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="https://www.instagram.com/kakacrads/" target="_blank" class="insta-card">
+                    <div class="insta-thumb-wrap">
+                        <div class="insta-thumb"></div>
+                        <div class="insta-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                            Adicione<br>assets/insta-2.jpg
+                        </div>
+                        <div class="insta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,119,55,0.7)" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="rgba(247,119,55,0.7)" stroke="none"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <h3>Teste Editor - Invento na Hora</h3>
-                        <p>Edição estilo Daily Vlog para grandes canais.</p>
+                        <h3>Reel — @kakacrads</h3>
+                        <p>Edição vertical para Instagram.</p>
                     </div>
-                </div>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="https://www.instagram.com/kakacrads/" target="_blank" class="insta-card">
+                    <div class="insta-thumb-wrap">
+                        <div class="insta-thumb"></div>
+                        <div class="insta-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                            Adicione<br>assets/insta-3.jpg
+                        </div>
+                        <div class="insta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,119,55,0.7)" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="rgba(247,119,55,0.7)" stroke="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Reel — @kakacrads</h3>
+                        <p>Edição vertical para Instagram.</p>
+                    </div>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="https://www.instagram.com/kakacrads/" target="_blank" class="insta-card">
+                    <div class="insta-thumb-wrap">
+                        <div class="insta-thumb"></div>
+                        <div class="insta-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                            Adicione<br>assets/insta-4.jpg
+                        </div>
+                        <div class="insta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(247,119,55,0.7)" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="rgba(247,119,55,0.7)" stroke="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Reel — @kakacrads</h3>
+                        <p>Edição vertical para Instagram.</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="cta-row">
+                <a href="https://www.instagram.com/kakacrads/" target="_blank" class="pill insta">Ver perfil no Instagram →</a>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <p>Raphael Borges © 2026 | Desenvolvido com foco em Engenharia, Tecnologia e Performance</p>
+        <span class="footer-mark">RB.</span>
+        <p>Raphael Borges © 2026 — Engenharia, Tecnologia &amp; Performance</p>
     </footer>
 
+    <script>
+        // Fade-up on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
